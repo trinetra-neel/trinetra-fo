@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TRINETRA F&O v1.0.9</title>
 <link rel="manifest" href="./manifest.webmanifest">
 <meta name="theme-color" content="#080e17">
 <meta name="application-name" content="TRINETRA F&O">
 <link rel="icon" type="image/png" href="./icons/icon-192.png">
-<title>TRINETRA F&O v1.0.8</title>
 <style>
 :root{color-scheme:dark;--bg:#080e17;--bg2:#0e1a29;--panel:#101e30;--line:#294059;--txt:#ebf3fd;--muted:#9bafc6;--accent:#4cd7c0;--teal:#176e6c;--red:#fa8591;--gold:#f0c574;--blue:#87b7ff}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 70% -20%,#203852 0,transparent 45%),var(--bg);color:var(--txt);font-family:Inter,Segoe UI,Arial,sans-serif;font-size:14px}button,input,select,textarea{font:inherit}button{cursor:pointer}button:disabled{opacity:.4;cursor:not-allowed}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent)}
@@ -192,7 +192,7 @@ aside button.v105-navchild{font-size:11px;color:#92b3c8;padding:7px 8px 7px 20px
 </style>
 </head>
 <body>
-<header class="header"><div class="brand"><h1>TRI<span>NETRA</span> <small>F&amp;O</small></h1><small>DERIVATIVES · TRADE JOURNAL · v1.0.5</small></div><div class="headActions"><span id="storageBadge" class="badge warn">Local workspace</span><span id="syncStatus104" class="v104-sync" aria-live="polite">Checking…</span><button class="btn small" id="folderBtn" onclick="connectFolder()">📁 Select Data Folder</button><button class="btn small" onclick="saveToFolder(true)">💾 Save Folder</button><button class="btn small" onclick="reloadFolder(true)">↻ Reload Folder</button><button class="btn small v104-backup" onclick="createBackup104('download')">📦 Backup Now</button></div></header>
+<header class="header"><div class="brand"><h1>TRI<span>NETRA</span> <small>F&amp;O</small></h1><small>DERIVATIVES · TRADE JOURNAL · v1.0.9</small></div><div class="headActions"><span id="storageBadge" class="badge warn">Local workspace</span><span id="syncStatus104" class="v104-sync" aria-live="polite">Checking…</span><button class="btn small" id="folderBtn" onclick="connectFolder()">📁 Select Data Folder</button><button class="btn small" onclick="saveToFolder(true)">💾 Save Folder</button><button class="btn small" onclick="reloadFolder(true)">↻ Reload Folder</button><button class="btn small v104-backup" onclick="createBackup104('download')">📦 Backup Now</button></div></header>
 <div class="shell"><aside id="nav"></aside><main id="main"></main></div>
 <div class="modal" id="tradeModal"><div class="dialog"><div class="dialogHead"><div><h2 id="dialogTitle">Trade</h2><small id="dialogSubtitle"></small></div><div class="toolbar"><button class="btn small" onclick="exportCurrentTrade()">Export Trade JSON</button><button class="btn small ghost" onclick="closeModal()">✕ Close</button></div></div><div class="dialogBody" id="dialogBody"></div></div></div>
 <div id="zoomOverlay" class="zoomOverlay" onclick="closeZoom(event)"><div class="row"><button class="btn" onclick="closeZoom(event,true)">✕ Close</button></div><img id="zoomImage" alt="Chart preview"></div>
@@ -532,15 +532,7 @@ render=function(editId){ensure102();if(activeNav==='capital'||activeNav==='overa
 function chartBase102(blob){return new Promise((res,rej)=>{let fr=new FileReader();fr.onload=()=>res(fr.result);fr.onerror=()=>rej(fr.error);fr.readAsDataURL(blob)})}
 function reportEsc102(x){return esc(x).replace(/\n/g,'<br>')}
 async function downloadReport102(){let c=buildCycles().find(x=>x.id===activeTrade);if(!c)return;const report=window.open('','_blank');if(!report){toast('Allow pop-ups to open the print/PDF report.',true);return}report.document.write('<!doctype html><title>Preparing trade report</title><body style="font:16px Arial;padding:25px">Preparing print/PDF report with charts…</body>');let j=journal(c),images=[];for(let x of(j.charts||[])){let blob=await getMediaBlob(x.id).catch(()=>null);images.push({name:x.name,slot:x.slot,note:x.note||'',uri:blob?await chartBase102(blob):''})}let t=cTotals102(c),title=esc(c.symbol)+' · '+esc(segText(c.segment));let body=`<h1>TRINETRA F&O · Trade Report</h1><h2>${title}</h2><div class="overview"><table><tbody><tr><td><b>Direction / Type</b></td><td>${c.direction} / ${typeLabel102(typeFor102(c))}</td><td><b>Status</b></td><td>${c.status}</td></tr><tr><td>Opened</td><td>${esc(shortTime(c.at))}</td><td>Latest / Closed</td><td>${esc(shortTime(c.exitAt||c.lastAt))}</td></tr><tr><td>Buy Qty / Avg</td><td>${fmt(t.buys,0)} / ₹${fmt(t.buyAvg)}</td><td>Sell Qty / Avg</td><td>${fmt(t.sells,0)} / ₹${fmt(t.sellAvg)}</td></tr><tr><td>Gross P&L</td><td>${money(c.realized)}</td><td>Estimated / Actual Charges</td><td>${money(c.charges)}</td></tr><tr><td><b>Net P&L</b></td><td><b>${money(net(c))}</b></td><td>Holding period</td><td>${heldLabel102(heldHours102(c))}</td></tr></tbody></table></div><h2>Strategy & Review</h2><p><b>Setup / Strategy:</b> ${reportEsc102(j.setup||'—')}</p><p><b>Strategy group:</b> ${reportEsc102(j.strategy||'—')}</p><p><b>Entry context:</b> ${reportEsc102(j.entryNote||'—')}</p><p><b>Exit context:</b> ${reportEsc102(j.exitNote||'—')}</p><p><b>Post-trade learning:</b> ${reportEsc102(j.reviewNote||'—')}</p><div class="note"><b>Trade review:</b><br>${reportEsc102(j.reviewLong102||'—')}</div><h2>Execution / Trading Log</h2><table><thead><tr><th>At</th><th>Event</th><th>Side</th><th>Units</th><th>Price ₹</th><th>Charges ₹</th><th>Reason / Notes</th></tr></thead><tbody>${c.events.map(e=>`<tr><td>${esc(shortTime(e.at))}</td><td>${esc(e.kind)}</td><td>${e.side}</td><td>${fmt(e.qty,0)}</td><td>${fmt(e.price)}</td><td>${fmt(e.fees)}</td><td>${reportEsc102(j.eventNotes?.[e.id]||'')}</td></tr>`).join('')}</tbody></table><h2>Charts · Decision Evidence</h2>${images.map(x=>`<section class="chart"><h3>${esc(x.slot)} · ${esc(x.name)}</h3>${x.uri?`<img src="${x.uri}" alt="${esc(x.name)}">`:'<p>Chart unavailable in this browser.</p>'}<div>${reportEsc102(x.note||'')}</div></section>`).join('')||'<p>No saved charts yet.</p>'}<footer>Generated ${new Date().toLocaleString('en-IN')} · TRINETRA F&O v1.0.8 · For personal journal records. Charges include Zerodha estimates / contract-note actual overrides; estimates need reconciliation.</footer>`;
-let html=`<!doctype html><html><head><meta charset="utf-8"><title>Trade Report · ${esc(c.symbol)}</title><style>body{margin:28px auto;max-width:1100px;color:#20252a;background:#fff;font:13px Arial,sans-serif}h1{font-size:23px;border-bottom:2px solid #2d7a7c;padding-bottom:10px}h2{font-size:17px;margin-top:27px}h3{font-size:13px}.overview{border:1px solid #aaa}table{border-collapse:collapse;width:100%;margin:8px 0 18px}td,th{border:1px solid #ccc;padding:7px;text-align:left;vertical-align:top}th{background:#f1f3f6}.note{white-space:normal;line-height:1.6;padding:12px;border:1px solid #ccc}.chart{break-inside:avoid;page-break-inside:avoid;margin:20px 0;padding:14px;border:1px solid #bbb}.chart img{display:block;width:100%;max-height:650px;object-fit:contain;margin:12px auto}footer{margin:26px 0;color:#666;font-size:10px}.printbtn{position:sticky;top:0;background:#fff;padding:12px;border-bottom:1px solid #aaa}.printbtn button{padding:9px 20px;cursor:pointer}@page{size:A4;margin:13mm}@media print{body{margin:0;max-width:none}.printbtn{display:none}.chart img{max-height:210mm}h2{break-after:avoid}}</style></head><body><div class="printbtn"><button onclick="window.print()">🖨 Print / Save as PDF</button> &nbsp; In the print dialog select <b>Save as PDF</b>.</div>${body}
-<script>
-/* F&O PWA v1.0.8: installs offline app shell. Never force reload while user is editing. */
-if ('serviceWorker' in navigator && location.protocol !== 'file:') {
- window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js',{updateViaCache:'none'})
- .then(r=>r.update().catch(()=>{})).catch(e=>console.warn('Offline shell not active',e)));
-}
-</script>
-</body></html>`;report.document.open();report.document.write(html);report.document.close();report.focus();toast('PDF-ready report opened · choose Print → Save as PDF')}
+let html=`<!doctype html><html><head><meta charset="utf-8"><title>Trade Report · ${esc(c.symbol)}</title><style>body{margin:28px auto;max-width:1100px;color:#20252a;background:#fff;font:13px Arial,sans-serif}h1{font-size:23px;border-bottom:2px solid #2d7a7c;padding-bottom:10px}h2{font-size:17px;margin-top:27px}h3{font-size:13px}.overview{border:1px solid #aaa}table{border-collapse:collapse;width:100%;margin:8px 0 18px}td,th{border:1px solid #ccc;padding:7px;text-align:left;vertical-align:top}th{background:#f1f3f6}.note{white-space:normal;line-height:1.6;padding:12px;border:1px solid #ccc}.chart{break-inside:avoid;page-break-inside:avoid;margin:20px 0;padding:14px;border:1px solid #bbb}.chart img{display:block;width:100%;max-height:650px;object-fit:contain;margin:12px auto}footer{margin:26px 0;color:#666;font-size:10px}.printbtn{position:sticky;top:0;background:#fff;padding:12px;border-bottom:1px solid #aaa}.printbtn button{padding:9px 20px;cursor:pointer}@page{size:A4;margin:13mm}@media print{body{margin:0;max-width:none}.printbtn{display:none}.chart img{max-height:210mm}h2{break-after:avoid}}</style></head><body><div class="printbtn"><button onclick="window.print()">🖨 Print / Save as PDF</button> &nbsp; In the print dialog select <b>Save as PDF</b>.</div>${body}</body></html>`;report.document.open();report.document.write(html);report.document.close();report.focus();toast('PDF-ready report opened · choose Print → Save as PDF')}
 
 /* TRINETRA F&O v1.0.2 - dedicated wide chart-first Decision Workspace */
 function decisionObj102(cid){let j=state.journals[cid];if(!j)return null;j.decision102=j.decision102||{};return j.decision102}
@@ -1367,9 +1359,20 @@ manualForm=function(editId){
 const renderBefore108=render;
 render=function(...args){const v=renderBefore108.apply(this,args);if(activeNav==='new'){
  const f=document.getElementById('executionForm');if(f){['input','change'].forEach(ev=>f.addEventListener(ev,chargeLive108));chargeLive108()}}
- let b=document.querySelector('.brand > small');if(b)b.textContent='DERIVATIVES · TRADE JOURNAL · v1.0.8';document.title='TRINETRA F&O · Derivatives Trading Journal v1.0.8';return v;
+ let b=document.querySelector('.brand > small');if(b)b.textContent='DERIVATIVES · TRADE JOURNAL · v1.0.9';document.title='TRINETRA F&O · Derivatives Trading Journal v1.0.9';return v;
 };
 
 render();
+</script>
+
+<script>
+/* PWA shell registration: standalone script, not inside report HTML/template strings. */
+if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./service-worker.js', {updateViaCache:'none'})
+      .then(reg => reg.update().catch(() => {}))
+      .catch(err => console.warn('TRINETRA F&O offline cache unavailable:', err));
+  });
+}
 </script>
 </body></html>
