@@ -214,6 +214,50 @@ aside button.v105-navchild{font-size:11px;color:#92b3c8;padding:7px 8px 7px 20px
 @media(max-width:1200px){.fo107-filemap{grid-template-columns:repeat(3,minmax(120px,1fr))}}@media(max-width:680px){.fo107-filemap,.fo107-zero{grid-template-columns:repeat(2,minmax(120px,1fr))}.fo107-dialog{width:100%;max-height:100vh}}
 
 </style>
+<style>
+
+/* 1.0.13 — stage-focused Trading Journal and separate Decision Workspace */
+.fo113-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin:12px 0 15px}
+.fo113-summary>div{border:1px solid #35526d;background:linear-gradient(145deg,#132944,#0f1e32);border-radius:10px;padding:11px;min-width:0}
+.fo113-summary small{display:block;color:#9bb9c9;font-size:10px;margin-bottom:7px}
+.fo113-summary strong{display:block;color:#e9f6fc;font-size:13px;line-height:1.5;overflow-wrap:anywhere}
+.fo113-summary .positive{color:#83f3d0}.fo113-summary .negative{color:#ffb0a7}
+.fo113-stagebar{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;margin:12px 0 16px}
+.fo113-stagebar .fo-stage-btn{min-height:72px}
+.fo113-phasecard{border:1px solid #345774;background:#101f34;border-radius:12px;padding:16px;margin-bottom:13px}
+.fo113-phasehead{display:flex;gap:12px;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;padding-bottom:12px;border-bottom:1px solid #30485f}
+.fo113-phasehead h3{margin:0 0 5px;font-size:17px;color:#dcf8f3}
+.fo113-phasehead p{margin:0;color:#a0bacd;font-size:11px;line-height:1.65}
+.fo113-badge{border:1px solid #4d9e8e;background:#14463e;border-radius:20px;padding:6px 10px;white-space:nowrap;color:#c7ffee;font-size:11px;font-weight:750}
+.fo113-actions{display:flex;flex-wrap:wrap;gap:9px;margin:14px 0}
+.fo113-actions .btn{padding:11px 14px;font-size:12px;font-weight:750}
+.fo113-logtable{margin-top:10px}
+.fo113-logtable table{min-width:700px}
+.fo113-logtable th{font-size:10px}.fo113-logtable td{font-size:11px;line-height:1.5}
+.fo113-noevent{border:1px dashed #42627b;border-radius:9px;background:#0b1a2b;padding:20px;margin:12px 0;color:#b4cadb;font-size:12px;line-height:1.7}
+.fo113-caption{color:#94b6c9;font-size:11px;margin-top:10px;line-height:1.6}
+.fo113-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:13px}
+.fo113-fields label{font-size:11px;color:#b7d5e5;font-weight:700}
+.fo113-fields textarea,.fo113-fields input{width:100%;display:block;border:1px solid #3c5c75;background:#081625;color:#effaff;border-radius:8px;padding:11px;min-height:48px;margin-top:8px}
+.fo113-fields textarea{min-height:85px;resize:vertical}
+.fo113-chartstrip{display:flex;align-items:center;gap:9px;flex-wrap:wrap;padding:13px;margin-top:13px;background:#0c2630;border:1px solid #367567;border-radius:9px;color:#b9dfde;font-size:11px}
+.fo113-chartstrip button{margin-left:auto}
+.fo113-stagebar-mini{margin:14px 0 8px}
+.fo113-dec-modal{position:fixed;inset:0;background:#02080ef2;z-index:65;display:none;align-items:center;justify-content:center;padding:12px}
+.fo113-dec-modal.open{display:flex}
+.fo113-dec-dialog{width:min(1780px,99vw);height:min(98vh,1110px);min-height:350px;display:flex;flex-direction:column;background:#0c1728;border:1px solid #3a6976;border-radius:14px;overflow:hidden;box-shadow:0 25px 80px #000d}
+.fo113-dec-head{padding:15px 19px;background:#12243a;border-bottom:1px solid #38556e;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.fo113-dec-head h2{margin:0 0 6px;font-size:18px;color:#ebfaff}
+.fo113-dec-head small{font-size:11px;color:#afd0db}
+.fo113-dec-body{padding:16px;overflow:auto;flex:1;min-height:0}
+.fo113-dec-foot{padding:10px 16px;background:#0e2135;border-top:1px solid #2d4e67;display:flex;gap:9px;justify-content:flex-end;align-items:center}
+.fo113-dec-body .v102-dchart-body{min-height:410px}
+.fo113-dec-body .fo-stagebar{grid-template-columns:repeat(5,minmax(0,1fr))}
+.fo113-dec-body .fo-event-picks{margin:8px 0 12px}
+@media(max-width:1050px){.fo113-summary{grid-template-columns:repeat(2,minmax(0,1fr))}.fo113-stagebar{grid-template-columns:repeat(3,minmax(0,1fr))}.fo113-dec-body .fo-stagebar{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:680px){.fo113-summary{grid-template-columns:repeat(2,minmax(0,1fr))}.fo113-stagebar{grid-template-columns:repeat(2,minmax(0,1fr))}.fo113-dec-body .fo-stagebar{grid-template-columns:repeat(2,minmax(0,1fr))}.fo113-fields{grid-template-columns:1fr}.fo113-chartstrip button{margin-left:0}}
+
+</style>
 </head>
 <body>
 <header class="header"><div class="brand"><h1>TRI<span>NETRA</span> <small>F&amp;O</small></h1><small>DERIVATIVES · TRADE JOURNAL · v1.0.11</small></div><div class="headActions"><span id="storageBadge" class="badge warn">Local workspace</span><span id="syncStatus104" class="v104-sync" aria-live="polite">Checking…</span><button class="btn small" id="folderBtn" onclick="connectFolder()">📁 Select Data Folder</button><button class="btn small" onclick="saveToFolder(true)">💾 Save Folder</button><button class="btn small" onclick="reloadFolder(true)">↻ Reload Folder</button><button class="btn small v104-backup" onclick="createBackup104('download')">📦 Backup Now</button></div></header>
@@ -555,7 +599,7 @@ const _baseRender102=render;
 render=function(editId){ensure102();if(activeNav==='capital'||activeNav==='overall'||activeNav==='editTrades'){nav();document.getElementById('main').innerHTML=activeNav==='capital'?renderCapital102():activeNav==='overall'?renderOverall102():editTrades102();updateBadge();}else _baseRender102(editId);document.title='TRINETRA F&O · Derivatives Trading Journal v1.0.2';let b=document.querySelector('.brand small');if(b)b.textContent='DERIVATIVES · TRADE JOURNAL · v1.0.2'};
 function chartBase102(blob){return new Promise((res,rej)=>{let fr=new FileReader();fr.onload=()=>res(fr.result);fr.onerror=()=>rej(fr.error);fr.readAsDataURL(blob)})}
 function reportEsc102(x){return esc(x).replace(/\n/g,'<br>')}
-async function downloadReport102(){let c=buildCycles().find(x=>x.id===activeTrade);if(!c)return;const report=window.open('','_blank');if(!report){toast('Allow pop-ups to open the print/PDF report.',true);return}report.document.write('<!doctype html><title>Preparing trade report</title><body style="font:16px Arial;padding:25px">Preparing print/PDF report with charts…</body>');let j=journal(c),images=[];for(let x of(j.charts||[])){let blob=await getMediaBlob(x.id).catch(()=>null);images.push({name:x.name,slot:x.slot,note:x.note||'',uri:blob?await chartBase102(blob):''})}let t=cTotals102(c),title=esc(c.symbol)+' · '+esc(segText(c.segment));let body=`<h1>TRINETRA F&O · Trade Report</h1><h2>${title}</h2><div class="overview"><table><tbody><tr><td><b>Direction / Type</b></td><td>${c.direction} / ${typeLabel102(typeFor102(c))}</td><td><b>Status</b></td><td>${c.status}</td></tr><tr><td>Opened</td><td>${esc(shortTime(c.at))}</td><td>Latest / Closed</td><td>${esc(shortTime(c.exitAt||c.lastAt))}</td></tr><tr><td>Buy Qty / Avg</td><td>${fmt(t.buys,0)} / ₹${fmt(t.buyAvg)}</td><td>Sell Qty / Avg</td><td>${fmt(t.sells,0)} / ₹${fmt(t.sellAvg)}</td></tr><tr><td>Gross P&L</td><td>${money(c.realized)}</td><td>Estimated / Actual Charges</td><td>${money(c.charges)}</td></tr><tr><td><b>Net P&L</b></td><td><b>${money(net(c))}</b></td><td>Holding period</td><td>${heldLabel102(heldHours102(c))}</td></tr></tbody></table></div><h2>Strategy & Review</h2><p><b>Setup / Strategy:</b> ${reportEsc102(j.setup||'—')}</p><p><b>Strategy group:</b> ${reportEsc102(j.strategy||'—')}</p><p><b>Entry context:</b> ${reportEsc102(j.entryNote||'—')}</p><p><b>Exit context:</b> ${reportEsc102(j.exitNote||'—')}</p><p><b>Post-trade learning:</b> ${reportEsc102(j.reviewNote||'—')}</p><div class="note"><b>Trade review:</b><br>${reportEsc102(j.reviewLong102||'—')}</div><h2>Execution / Trading Log</h2><table><thead><tr><th>At</th><th>Event</th><th>Side</th><th>Units</th><th>Price ₹</th><th>Charges ₹</th><th>Reason / Notes</th></tr></thead><tbody>${c.events.map(e=>`<tr><td>${esc(shortTime(e.at))}</td><td>${esc(e.kind)}</td><td>${e.side}</td><td>${fmt(e.qty,0)}</td><td>${fmt(e.price)}</td><td>${fmt(e.fees)}</td><td>${reportEsc102(j.eventNotes?.[e.id]||'')}</td></tr>`).join('')}</tbody></table><h2>Charts · Decision Evidence</h2>${images.map(x=>`<section class="chart"><h3>${esc(x.slot)} · ${esc(x.name)}</h3>${x.uri?`<img src="${x.uri}" alt="${esc(x.name)}">`:'<p>Chart unavailable in this browser.</p>'}<div>${reportEsc102(x.note||'')}</div></section>`).join('')||'<p>No saved charts yet.</p>'}<footer>Generated ${new Date().toLocaleString('en-IN')} · TRINETRA F&O v1.0.8 · For personal journal records. Charges include Zerodha estimates / contract-note actual overrides; estimates need reconciliation.</footer>`;
+async function downloadReport102(){let c=buildCycles().find(x=>x.id===activeTrade);if(!c)return;const report=window.open('','_blank');if(!report){toast('Allow pop-ups to open the print/PDF report.',true);return}report.document.write('<!doctype html><title>Preparing trade report</title><body style="font:16px Arial;padding:25px">Preparing print/PDF report with charts…</body>');let j=journal(c),images=[];for(let x of(j.charts||[])){let blob=await getMediaBlob(x.id).catch(()=>null);images.push({name:x.name,slot:x.slot,note:x.note||'',uri:blob?await chartBase102(blob):''})}let t=cTotals102(c),title=esc(c.symbol)+' · '+esc(segText(c.segment));let body=`<h1>TRINETRA F&O · Trade Report</h1><h2>${title}</h2><div class="overview"><table><tbody><tr><td><b>Direction / Type</b></td><td>${c.direction} / ${typeLabel102(typeFor102(c))}</td><td><b>Status</b></td><td>${c.status}</td></tr><tr><td>Opened</td><td>${esc(shortTime(c.at))}</td><td>Latest / Closed</td><td>${esc(shortTime(c.exitAt||c.lastAt))}</td></tr><tr><td>Buy Qty / Avg</td><td>${fmt(t.buys,0)} / ₹${fmt(t.buyAvg)}</td><td>Sell Qty / Avg</td><td>${fmt(t.sells,0)} / ₹${fmt(t.sellAvg)}</td></tr><tr><td>Gross P&L</td><td>${money(c.realized)}</td><td>Estimated / Actual Charges</td><td>${money(c.charges)}</td></tr><tr><td><b>Net P&L</b></td><td><b>${money(net(c))}</b></td><td>Holding period</td><td>${heldLabel102(heldHours102(c))}</td></tr></tbody></table></div><h2>Strategy & Review</h2><p><b>Setup / Strategy:</b> ${reportEsc102(j.setup||'—')}</p><p><b>Strategy group:</b> ${reportEsc102(j.strategy||'—')}</p><p><b>Entry context:</b> ${reportEsc102(j.entryNote||'—')}</p><p><b>Exit context:</b> ${reportEsc102(j.exitNote||'—')}</p><p><b>Post-trade learning:</b> ${reportEsc102(j.reviewNote||'—')}</p><div class="note"><b>Trade review:</b><br>${reportEsc102(j.reviewLong102||'—')}</div>${fo113ReportNotes(c)}<h2>Execution / Trading Log</h2><table><thead><tr><th>At</th><th>Event</th><th>Side</th><th>Units</th><th>Price ₹</th><th>Charges ₹</th><th>Reason / Notes</th></tr></thead><tbody>${c.events.map(e=>`<tr><td>${esc(shortTime(e.at))}</td><td>${esc(e.kind)}</td><td>${e.side}</td><td>${fmt(e.qty,0)}</td><td>${fmt(e.price)}</td><td>${fmt(e.fees)}</td><td>${reportEsc102(j.eventNotes?.[e.id]||'')}</td></tr>`).join('')}</tbody></table><h2>Charts · Decision Evidence</h2>${images.map(x=>`<section class="chart"><h3>${esc(x.slot)} · ${esc(x.name)}</h3>${x.uri?`<img src="${x.uri}" alt="${esc(x.name)}">`:'<p>Chart unavailable in this browser.</p>'}<div>${reportEsc102(x.note||'')}</div></section>`).join('')||'<p>No saved charts yet.</p>'}<footer>Generated ${new Date().toLocaleString('en-IN')} · TRINETRA F&O v1.0.13 · For personal journal records. Charges include Zerodha estimates / contract-note actual overrides; estimates need reconciliation.</footer>`;
 let html=`<!doctype html><html><head><meta charset="utf-8"><title>Trade Report · ${esc(c.symbol)}</title><style>body{margin:28px auto;max-width:1100px;color:#20252a;background:#fff;font:13px Arial,sans-serif}h1{font-size:23px;border-bottom:2px solid #2d7a7c;padding-bottom:10px}h2{font-size:17px;margin-top:27px}h3{font-size:13px}.overview{border:1px solid #aaa}table{border-collapse:collapse;width:100%;margin:8px 0 18px}td,th{border:1px solid #ccc;padding:7px;text-align:left;vertical-align:top}th{background:#f1f3f6}.note{white-space:normal;line-height:1.6;padding:12px;border:1px solid #ccc}.chart{break-inside:avoid;page-break-inside:avoid;margin:20px 0;padding:14px;border:1px solid #bbb}.chart img{display:block;width:100%;max-height:650px;object-fit:contain;margin:12px auto}footer{margin:26px 0;color:#666;font-size:10px}.printbtn{position:sticky;top:0;background:#fff;padding:12px;border-bottom:1px solid #aaa}.printbtn button{padding:9px 20px;cursor:pointer}@page{size:A4;margin:13mm}@media print{body{margin:0;max-width:none}.printbtn{display:none}.chart img{max-height:210mm}h2{break-after:avoid}}</style></head><body><div class="printbtn"><button onclick="window.print()">🖨 Print / Save as PDF</button> &nbsp; In the print dialog select <b>Save as PDF</b>.</div>${body}</body></html>`;report.document.open();report.document.write(html);report.document.close();report.focus();toast('PDF-ready report opened · choose Print → Save as PDF')}
 
 /* TRINETRA F&O v1.0.2 - dedicated wide chart-first Decision Workspace */
@@ -1515,7 +1559,7 @@ render=function(...args){const ret=fo110RenderBefore.apply(this,args);const labe
 
 /* v1.0.11 — short-only scanner research, Long-style two-tab scanner import.
    UI only: leave old watch direction keys and all trades untouched for migration safety. */
-const FO111_VERSION='1.0.12';
+const FO111_VERSION='1.0.13';
 const FO111_DESC={
  S01:['Daily','701 · D RSI 60 BE-V','Daily RSI 60 BE-V setup'],
  S02:['Weekly','702 · W RSI 60 BE-V','Weekly RSI 60 BE-V setup'],
@@ -1745,6 +1789,143 @@ render=function(...args){
  document.title='TRINETRA F&O · Derivatives Trading Journal v'+FO111_VERSION;
  return result;
 };
+
+
+/* TRINETRA F&O v1.0.13 — stage-by-stage Journal.
+   Keeps existing transactions, journal IDs, charts, scanner/history, capital and Dropbox storage.
+   Does NOT change cycle construction, charge calculation or Zerodha CSV parsing. */
+let fo113Section='initial', fo113DecisionShown=false;
+const FO113_STAGES=[
+  {id:'setup',label:'Setup / Strategy',icon:'📌',slot:'setup',kind:null},
+  {id:'initial',label:'Initial Entry',icon:'↗',slot:'entry',kind:'Initial Entry'},
+  {id:'pyramid',label:'Pyramid / Add',icon:'＋',slot:'during',kind:'Pyramid/Add'},
+  {id:'partial',label:'Partial Exit',icon:'◐',slot:'exit',kind:'Partial Exit'},
+  {id:'final',label:'Final Exit / Close',icon:'✓',slot:'exit',kind:'Final Exit'}
+];
+function fo113Stage(){return FO113_STAGES.find(x=>x.id===fo113Section)||FO113_STAGES[1]}
+function fo113Events(c,s=fo113Stage()){return s.kind?c.events.filter(e=>e.kind===s.kind):[]}
+function fo113SetSection(name){
+ const st=FO113_STAGES.find(x=>x.id===name);if(!st)return;
+ fo113Section=name;foStage=st.slot;foEventId=fo113Events(buildCycles().find(c=>c.id===activeTrade)||{events:[]},st)[0]?.id||'';
+ foSelectedChart='';renderTrade();
+}
+function fo113StageBar(c){return `<div class="fo113-stagebar">${FO113_STAGES.map(s=>{const events=fo113Events(c,s),charts=(journal(c).charts||[]).filter(x=>x.slot===s.slot&&(s.kind?(!x.eventId||events.some(e=>e.id===x.eventId)||x.eventId==='fo113-pending-'+s.id):true));return `<button type="button" class="fo-stage-btn ${fo113Section===s.id?'active':''} ${charts.length?'filled':''}" onclick="fo113SetSection('${s.id}')"><b>${s.icon} ${esc(s.label)}</b><small>${s.id==='setup'?'Pre-trade':events.length+' recorded fill'+(events.length===1?'':'s')} · ${charts.length} chart${charts.length===1?'':'s'}</small></button>`}).join('')}</div>`}
+function fo113Summary(c){const t=cTotals102(c),latest=c.exitAt||c.lastAt;return `<div class="fo113-summary">
+ <div><small>Segment / Direction</small><strong>${esc(segText(c.segment))} · ${esc(c.direction)}</strong></div>
+ <div><small>Instrument / Scrip</small><strong>${esc(c.symbol)}</strong></div>
+ <div><small>Trade Type / Status</small><strong>${esc(typeLabel102(typeFor102(c)))} · ${esc(c.status)}</strong></div>
+ <div><small>First Entry → Last / Exit (IST)</small><strong>${esc(shortTime(c.at))}<br>→ ${esc(shortTime(latest))}</strong></div>
+ <div><small>Total BUY / SELL Quantity</small><strong>${fmt(t.buys,0)} / ${fmt(t.sells,0)} units</strong></div>
+ <div><small>Average BUY / SELL Price</small><strong>₹${fmt(t.buyAvg)} / ₹${fmt(t.sellAvg)}</strong></div>
+ <div><small>Gross Realized / Charges</small><strong>${money(c.realized)} / ${money(c.charges)}</strong></div>
+ <div><small>Net Realized P&amp;L</small><strong class="${net(c)>=0?'positive':'negative'}">${money(net(c))}</strong></div>
+ </div>`}
+function fo113ManualEntry(){const c=buildCycles().find(x=>x.id===activeTrade);if(!c)return;
+ if(c.status==='CLOSED'&&!confirm('This trade is already CLOSED. A new execution in this contract can create a NEW trade cycle. Continue to manual entry?'))return;
+ const stage=fo113Stage(),side=stage.id==='initial'?(c.sign>0?'BUY':'SELL'):stage.id==='pyramid'?(c.sign>0?'BUY':'SELL'):(c.sign>0?'SELL':'BUY');
+ const sym=c.symbol,seg=c.segment,tt=typeFor102(c),open=c.openQty;
+ closeModal();goto('new');
+ const form=document.getElementById('executionForm');if(!form)return;
+ for(const [name,value] of Object.entries({symbol:sym,segment:seg,side,tradeType:tt})){
+   let input=form.elements.namedItem(name);if(input){input.value=value;input.dispatchEvent(new Event('change',{bubbles:true}))}
+ }
+ if(stage.id==='final'&&open>0){const qty=form.elements.namedItem('qty');if(qty)qty.value=String(open)}
+ toast('Manual execution prefilled. Confirm actual fill time, price and quantity before saving.');
+}
+function fo113Import(){closeModal();goto('import');toast('Select the actual Zerodha Tradebook CSV; only the chosen executed rows will be imported.');}
+function fo113ReportNotes(c){
+ const j=journal(c),blocks=[];
+ for(const stage of FO113_STAGES){
+   const value=(j.stageNotes?.[stage.id]??j.stageNotes?.[stage.slot]??'').trim();
+   if(value)blocks.push(`<p><b>${esc(stage.label)} — Stage Notes:</b><br>${reportEsc102(value)}</p>`)
+ }
+ const decision=j.decision102||{};
+ for(const [slot,section] of Object.entries(decision)){
+   if(!section||typeof section!=='object')continue;
+   const notes=[];
+   for(const [k,v] of Object.entries(section.top||{})){if(String(v||'').trim())notes.push(`${esc(k)}: ${esc(v)}`)}
+   for(const [view,fields] of Object.entries(section.panels||{}))for(const [key,val] of Object.entries(fields||{})){if(String(val||'').trim())notes.push(`${esc(view)} / ${esc(key)}: ${reportEsc102(String(val))}`)}
+   if(String(section.special||'').trim())notes.push('Special: '+reportEsc102(String(section.special)));
+   if(notes.length)blocks.push(`<div class="note"><b>Decision Workspace · ${esc(slot)}</b><br>${notes.join('<br>')}</div>`);
+ }
+ return blocks.length?'<h2>Stage Notes &amp; Decision Workspace</h2>'+blocks.join(''):'';
+}
+function fo113Log(c,events){
+ if(!events.length)return `<div class="fo113-noevent"><b>No executed fill recorded for this stage.</b><br>${fo113Section==='setup'?'Use the Setup / Strategy fields below to document your pre-trade plan.':'For an Intraday trade, all BUY/SELL fills can come from the SAME Tradebook CSV. For Carry Forward trades, import subsequent-day fills whenever executed.'}</div>`;
+ return `<div class="tableWrap fo113-logtable"><table><thead><tr><th>Date / Time (IST)</th><th>Side</th><th>Quantity</th><th>Execution Price</th><th>Charges</th><th>Order / Trade ID</th><th>Source</th><th>Action</th></tr></thead><tbody>${events.map(e=>{const tx=state.transactions.find(t=>t.id===e.txid);return `<tr><td><b>${esc(shortTime(e.at))}</b></td><td><span class="pill ${e.side==='BUY'?'long':'short'}">${esc(e.side)}</span></td><td>${fmt(e.qty,0)}</td><td>₹${fmt(e.price)}</td><td>₹${fmt(e.fees)}</td><td style="font-size:10px">${esc(tx?.orderid||'—')}<br>${esc(tx?.tradeid||'—')}</td><td>${esc(e.source||'—')}</td><td><button class="btn small" onclick="openEdit('${esc(e.txid)}')">Edit Fill ↗</button></td></tr>`}).join('')}</tbody></table></div>`;
+}
+function fo113StageNote(c){const s=fo113Stage(),j=journal(c),legacy=j.stageNotes?.[s.slot]||'',specific=j.stageNotes?.[s.id];return `<div class="fo113-fields"><label>Stage Trading Decision / Notes (optional)<textarea placeholder="Brief reason; chart evidence belongs in the Decision Log." onchange="fo113SaveStageNote('${esc(c.id)}','${s.id}',this.value)">${esc(specific??legacy)}</textarea></label><label>Selected Stage Context<textarea placeholder="Notes about the detected execution(s), context and risk (optional)." readonly>${esc(fo113Events(c,s).map(e=>`${shortTime(e.at)} · ${e.side} ${fmt(e.qty,0)} @ ₹${fmt(e.price)}`).join('\n')||'No recorded execution in this stage.')}</textarea></label></div>`}
+function fo113SaveStageNote(cid,section,value){const c=buildCycles().find(x=>x.id===cid);if(!c)return;const j=journal(c);j.stageNotes=j.stageNotes||{};const old=j.stageNotes[section]??'';if(old===value)return;changeNote102(cid,'stage',section,value);j.stageNotes[section]=value;saveLocal();toast('Stage note saved');}
+function fo113SetupFields(c){let j=journal(c);return `<div class="fo113-fields">
+  <label>Trade Setup / Strategy<textarea placeholder="Pre-entry technical setup / market structure / risk" onchange="setJournal('${esc(c.id)}','setup',this.value)">${esc(j.setup||'')}</textarea></label>
+  <label>Strategy / Method<textarea placeholder="e.g. M/W/D context, break-down, resistance, risk plan" onchange="setJournal('${esc(c.id)}','strategy',this.value)">${esc(j.strategy||'')}</textarea></label></div>`}
+function fo113Journal(c){const stage=fo113Stage(),events=fo113Events(c,stage),j=journal(c),chartCount=(j.charts||[]).filter(x=>x.slot===stage.slot&&(!stage.kind||!x.eventId||events.some(e=>e.id===x.eventId)||x.eventId==='fo113-pending-'+stage.id)).length;
+ return `<div class="fo-journey"><b>TRADING JOURNAL · STAGE BY STAGE</b> &nbsp; Choose a stage to see ONLY its executed fills (time, quantity, price, charges). Add optional notes here. Open <b>Decision Log &amp; Charts</b> in its own wide workspace.</div>
+ ${fo113Summary(c)}${fo113StageBar(c)}
+ <section class="fo113-phasecard"><div class="fo113-phasehead"><div><h3>${stage.icon} ${esc(stage.label)}</h3><p>${stage.id==='setup'?'Set the technical plan before entering. No broker execution is required for setup.':stage.id==='initial'?'The FIRST real fill automatically creates the Initial Entry. It is never locked.':stage.id==='pyramid'?'Adds or pyramids are detected from same-direction executions.':stage.id==='partial'?'Partial exit means some, but not all, open quantity is closed.':'Final exit occurs automatically when the remaining quantity becomes zero.'}</p></div><span class="fo113-badge">${events.length} execution${events.length===1?'':'s'}</span></div>
+ <div class="fo113-actions">${stage.id==='setup'?'':`<button class="btn" onclick="fo113ManualEntry()">＋ Manual Execution</button>`}<button class="btn" onclick="fo113Import()">⇪ Upload Broker Tradebook CSV</button>${events.length?`<button class="btn" onclick="openEdit('${esc(events[0].txid)}')">✎ Edit Recorded Fill</button>`:''}<button class="btn primary" onclick="fo113OpenDecision()">▧ Decision Log &amp; Charts ↗</button></div>
+ <h4 style="margin:14px 0 8px;color:#d3effa">${stage.id==='setup'?'Pre-Trade Planning':'Trading Log · '+esc(stage.label)}</h4>${stage.id==='setup'?fo113SetupFields(c):fo113Log(c,events)}
+ ${stage.id==='setup'?'':fo113StageNote(c)}
+ <div class="fo113-chartstrip"><span>▧ ${chartCount} chart${chartCount===1?'':'s'} linked to ${esc(stage.label)}. Screenshot panels, chart windows, TF notes, Undo / Redo are in the Decision Workspace.</span><button class="btn small green" onclick="fo113OpenDecision()">Open Decision Workspace ↗</button></div>
+ </section><div class="fo113-caption"><b>Recording rules:</b> Both Intraday and Carry Forward trades use broker executions, with the same auto-detected stages. For Intraday there is no need to upload separate CSVs for Entry / Add / Exits; one Tradebook can contain them all. For Carry Forward, later-day fills can be imported as executed. Editing fills will automatically recalculate stage assignment and P&amp;L.</div>
+ <div class="row justify" style="margin:18px 0"><button class="btn" onclick="showTab('log')">View Complete Trading Log ↗</button><div class="toolbar"><button class="btn" onclick="showTab('review')">Trade Review ↗</button><button class="btn primary" onclick="downloadReport102()">🖨 Full Trade Report · Save as PDF</button></div></div>`
+}
+function fo113DecisionSelector(c){const s=fo113Stage(),events=fo113Events(c,s);return `<div class="fo-event-picks"><strong>${s.id==='setup'?'PRE-TRADE SETUP':'EXECUTED '+esc(s.label.toUpperCase())+':'}</strong>${events.length?events.map((e,i)=>`<button class="${foEventId===e.id?'active':''}" onclick="fo113ChooseEvent('${esc(e.id)}')">${i+1}. ${esc(shortTime(e.at))} · ${esc(e.side)} ${fmt(e.qty,0)} @ ₹${fmt(e.price)}</button>`).join(''):`<span class="fo-event-preview">No execution yet; stage-level chart notes can still be recorded.</span>`}</div>`}
+function fo113ChooseEvent(eid){foEventId=eid;foSelectedChart='';renderTrade()}
+const fo113BaseDecisionStage=decisionStage102;
+decisionStage102=function(cid,slot){
+ if(fo113DecisionShown&&slot==='exit'&&(fo113Section==='partial'||fo113Section==='final')){
+  const c=buildCycles().find(x=>x.id===cid),j=c?journal(c):null,stored=j?.decision102;
+  if(stored?.exit&&!stored[fo113Section])stored[fo113Section]=JSON.parse(JSON.stringify(stored.exit)); // legacy exit notes preserved
+  return fo113BaseDecisionStage(cid,fo113Section);
+ }
+ return fo113BaseDecisionStage(cid,slot);
+};
+const fo113BaseEventFor=foEventFor;
+foEventFor=function(c,slot){
+ if(fo113DecisionShown&&slot==='exit'&&(fo113Section==='partial'||fo113Section==='final')){
+  const events=fo113Events(c,fo113Stage());
+  return events.find(e=>e.id===foEventId)||events[0]||{id:'fo113-pending-'+fo113Section,kind:'Planned '+fo113Stage().label};
+ }
+ return fo113BaseEventFor(c,slot);
+};
+function fo113RenderDecision(){if(!fo113DecisionShown)return;const c=buildCycles().find(x=>x.id===activeTrade);if(!c){fo113CloseDecision();return}
+ const layer=document.getElementById('fo113DecisionModal');const st=fo113Stage();
+ document.getElementById('fo113DecisionTitle').textContent='DECISION LOG & CHARTS · '+c.symbol;
+ document.getElementById('fo113DecisionSubtitle').textContent=segText(c.segment)+' · '+c.direction+' · '+typeLabel102(typeFor102(c))+' · '+st.label;
+ document.getElementById('fo113DecisionBody').innerHTML=renderDecision(c);
+ const eventPicks=document.querySelector('#fo113DecisionBody .fo-event-picks');if(eventPicks)eventPicks.outerHTML=fo113DecisionSelector(c);
+ layer.classList.add('open');hydrateImages();
+}
+function fo113OpenDecision(){let c=buildCycles().find(x=>x.id===activeTrade);if(!c)return;const stage=fo113Stage();foStage=stage.slot;foEventId=fo113Events(c,stage).find(e=>e.id===foEventId)?.id||fo113Events(c,stage)[0]?.id||'';fo113DecisionShown=true;fo113RenderDecision();}
+function fo113CloseDecision(){fo113DecisionShown=false;document.getElementById('fo113DecisionModal')?.classList.remove('open');const body=document.getElementById('fo113DecisionBody');if(body)body.innerHTML='';detailTab='journal';const c=buildCycles().find(x=>x.id===activeTrade);if(c)renderTrade()}
+const fo113OldRenderTrade=renderTrade;
+renderTrade=function(){if(fo113DecisionShown){fo113RenderDecision();return}
+ fo113OldRenderTrade();const c=buildCycles().find(x=>x.id===activeTrade);if(!c)return;
+ const body=document.getElementById('dialogBody'),tabs=body?.querySelector('.fo-panel-tabs');if(!body||!tabs)return;
+ const decisionBtn=[...tabs.querySelectorAll('button')].find(b=>b.textContent.includes('Decision Log'));
+ if(decisionBtn)decisionBtn.setAttribute('onclick','fo113OpenDecision()');
+ if(detailTab==='journal'){body.innerHTML=tabs.outerHTML+fo113Journal(c)}
+ const pdfBtn=document.getElementById('v102-pdf-btn');if(pdfBtn)pdfBtn.textContent='🖨 PDF Report';
+};
+const fo113OldOpenTrade=openTrade;
+openTrade=function(cid,tab='journal'){
+ fo113Section='initial';fo113DecisionShown=false;foStage='entry';foEventId='';foSelectedChart='';
+ fo113OldOpenTrade(cid,tab==='decision'?'journal':tab);
+ if(tab==='decision')fo113OpenDecision();
+};
+const fo113OldCloseModal=closeModal;
+closeModal=function(){fo113DecisionShown=false;document.getElementById('fo113DecisionModal')?.classList.remove('open');fo113OldCloseModal()};
+const fo113OldFullDecision=fullDecision102;
+fullDecision102=function(){fo113OpenDecision()};
+const fo113OldCompactDecision=compactDecision102;
+compactDecision102=function(){if(fo113DecisionShown)fo113CloseDecision();else fo113OldCompactDecision()};
+// Existing 1.0.3 chart-window actions and 1.0.2 note Undo/Redo call renderTrade();
+// the wrapper above redraws the separate workspace while keeping journal beneath intact.
+const fo113OldStageHeader=foStageHeader;
+foStageHeader=function(c){return fo113StageBar(c)};
+document.body.insertAdjacentHTML('beforeend',`<div class="fo113-dec-modal" id="fo113DecisionModal" role="dialog" aria-modal="true" aria-label="Decision Log and Chart Workspace"><div class="fo113-dec-dialog"><div class="fo113-dec-head"><div><h2 id="fo113DecisionTitle">Decision Log &amp; Charts</h2><small id="fo113DecisionSubtitle"></small></div><div class="toolbar"><button class="btn small" onclick="undoNote102()">↶ Undo Note</button><button class="btn small" onclick="redoNote102()">↷ Redo Note</button><button class="btn small primary" onclick="fo113CloseDecision()">✓ Save &amp; Back to Journal</button></div></div><div class="fo113-dec-body" id="fo113DecisionBody"></div><div class="fo113-dec-foot"><button class="btn" onclick="fo113CloseDecision()">← Back to Journal</button><button class="btn primary" onclick="fo113CloseDecision()">✓ Save &amp; Exit</button></div></div></div>`);
+window.addEventListener('keydown',function(e){if(e.key==='Escape'&&fo113DecisionShown&&!document.getElementById('zoomOverlay').classList.contains('open')){e.preventDefault();e.stopImmediatePropagation();fo113CloseDecision()}},true);
 
 render();
 </script>
