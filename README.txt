@@ -1,7 +1,7 @@
-TRINETRA F&O v1.0.13 — Stage-focused Trading Journal
+TRINETRA F&O v1.0.14 — Decision Log Entry / Exit View simplification
 
-NEW: stage-specific Execution Ledger for Setup/Initial Entry/Pyramid/Partial Exit/Final Exit; separate wide Decision Log & Charts workspace; direct manual/tradebook/edit fill actions; improved trade summary. Retains v1.0.12 scanner run types, S01–S06 short scanners, Zerodha Tradebook importer, charges and original data storage namespace.
+In the dedicated Decision Log & Charts workspace, D · ENTRY / EXIT VIEW now contains exactly two fields: TF and Description / Notes. Context, Thesis, Texture, chart windows, and every other stage retain their existing behavior. Description notes persist in the same journal state via existing save / undo / redo / Dropbox storage. Legacy D indicator notes are displayed in Description until the user edits it; old JSON keys are retained for safety.
 
-SAFE UPDATE: Back up your TRINETRA F&O DATA, MEDIA & BACKUP folder and retain an external copy of a full backup before replacing GitHub Pages PWA files. Do not upload your private data files to GitHub. Load existing folder then Reload, verify capital / closed trades / scanners; test with separate sandbox folder first.
+Also retains all v1.0.13 features (stage-wise journal, Zerodha tradebook import, scanner sessions and backup). No changes to the data schema or private data locations.
 
-PDF: choose browser Print → Save as PDF from generated full report.
+SAFETY: Before updating GitHub Pages, use Backup Now and keep a copy outside Dropbox. Do not upload DATA / MEDIA / BACKUP or private JSON files to GitHub. After update, Reload Folder, verify capital, trade and charts. Avoid editing on two computers simultaneously.
