@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>TRINETRA F&O v1.0.9</title>
+<title>TRINETRA F&O v1.0.11</title>
 <link rel="manifest" href="./manifest.webmanifest">
 <meta name="theme-color" content="#080e17">
 <meta name="application-name" content="TRINETRA F&O">
@@ -172,6 +172,30 @@ aside button.v105-navchild{font-size:11px;color:#92b3c8;padding:7px 8px 7px 20px
 .v106-hublink p{color:#b1cfd5;font-size:12px;margin:6px 0 0}.v106-dash-mother{border-color:#438578}
 @media(max-width:780px){.v106-kpi{min-width:85px;flex-basis:85px}.v106-compare{grid-template-columns:repeat(3,minmax(80px,1fr))}.v106-hublink{flex-wrap:wrap}.v106-mothertable{max-height:none}}
 
+\n/* TRINETRA F&O 1.0.11 — SHORT research scanner UI */
+.fo111-legend{margin:0 0 15px;padding:14px 15px;background:#10243a;border:1px solid #315671;border-radius:12px}
+.fo111-legend-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+.fo111-legend-head strong{font-size:13px;color:#e0f5ff}.fo111-legend-head small{font-size:10px;color:#a0bed0}
+.fo111-legend-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.fo111-legend-item{display:flex;align-items:center;gap:9px;border:1px solid #34506b;background:#0c192c;border-radius:8px;padding:9px 10px;min-width:0;cursor:pointer;text-align:left;color:#cddfed}
+.fo111-legend-item:hover{border-color:#4cd7c0;background:#142d40}
+.fo111-code{background:#163d50;border:1px solid #318b91;border-radius:5px;padding:4px 8px;color:#7becdc;white-space:nowrap;font-weight:800;font-size:11px}
+.fo111-legend-copy{font-size:11px;line-height:1.4;min-width:0}.fo111-legend-copy b{display:block;color:#e4f4ff}.fo111-legend-copy small{display:block;color:#9bb5c9;font-size:10px}
+.fo111-tabs{display:flex;gap:6px;padding:0 0 10px;border-bottom:1px solid #38536c;margin:0 0 14px;flex-wrap:wrap}
+.fo111-tabs button{border:1px solid #36516d;border-radius:7px 7px 0 0;padding:10px 15px;background:#0f2136;color:#abc6d8;font-size:11px;font-weight:800}
+.fo111-tabs button.active{background:#174846;color:#bcffed;border-color:#41cbb5}
+.fo111-inputZone{border:1px dashed #3a8290;border-radius:10px;background:#102d3b;padding:13px;margin:13px 0}
+.fo111-inputZone .fo107-filepick{margin:2px 0 8px;display:inline-flex}
+.fo111-statusHelp{font-size:11px;margin:5px 0 11px;color:#abc5d8;line-height:1.6}
+.fo111-zeroEntry{margin:15px 0 10px;max-width:580px}.fo111-zeroEntry label{display:block;color:#bad0dc;font-weight:700;font-size:11px;margin:0 0 7px}.fo111-zeroEntry input{width:100%;border:1px solid #38516e;background:#071521;color:#ebf7ff;padding:11px;border-radius:8px}
+.fo111-zeroError{font-size:11px;color:#ffbdaf;margin-top:7px}.fo111-steps{font-size:11px;color:#aac1d4;line-height:1.65}
+.fo111-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:13px 0 3px;margin-top:14px;border-top:1px solid #30495c}
+.fo111-footer .btn{padding:10px 15px}
+.fo111-statusGroups{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0}
+.fo111-statusGroup{background:#0c1b2d;border:1px solid #334f65;border-radius:9px;padding:10px}
+.fo111-statusGroup b{font-size:11px;color:#ddf4ff;display:block;margin-bottom:8px}.fo111-statusGroup p{font-size:10px;color:#a9bfd1;line-height:1.45;margin:0}
+@media(max-width:1050px){.fo111-legend-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.fo111-statusGroups{grid-template-columns:1fr}}
+@media(max-width:650px){.fo111-legend-grid{grid-template-columns:1fr}}
 </style>
 <style>
 /* Scanner Command Center · TRINETRA F&O v1.0.7 */
@@ -192,14 +216,14 @@ aside button.v105-navchild{font-size:11px;color:#92b3c8;padding:7px 8px 7px 20px
 </style>
 </head>
 <body>
-<header class="header"><div class="brand"><h1>TRI<span>NETRA</span> <small>F&amp;O</small></h1><small>DERIVATIVES · TRADE JOURNAL · v1.0.9</small></div><div class="headActions"><span id="storageBadge" class="badge warn">Local workspace</span><span id="syncStatus104" class="v104-sync" aria-live="polite">Checking…</span><button class="btn small" id="folderBtn" onclick="connectFolder()">📁 Select Data Folder</button><button class="btn small" onclick="saveToFolder(true)">💾 Save Folder</button><button class="btn small" onclick="reloadFolder(true)">↻ Reload Folder</button><button class="btn small v104-backup" onclick="createBackup104('download')">📦 Backup Now</button></div></header>
+<header class="header"><div class="brand"><h1>TRI<span>NETRA</span> <small>F&amp;O</small></h1><small>DERIVATIVES · TRADE JOURNAL · v1.0.11</small></div><div class="headActions"><span id="storageBadge" class="badge warn">Local workspace</span><span id="syncStatus104" class="v104-sync" aria-live="polite">Checking…</span><button class="btn small" id="folderBtn" onclick="connectFolder()">📁 Select Data Folder</button><button class="btn small" onclick="saveToFolder(true)">💾 Save Folder</button><button class="btn small" onclick="reloadFolder(true)">↻ Reload Folder</button><button class="btn small v104-backup" onclick="createBackup104('download')">📦 Backup Now</button></div></header>
 <div class="shell"><aside id="nav"></aside><main id="main"></main></div>
 <div class="modal" id="tradeModal"><div class="dialog"><div class="dialogHead"><div><h2 id="dialogTitle">Trade</h2><small id="dialogSubtitle"></small></div><div class="toolbar"><button class="btn small" onclick="exportCurrentTrade()">Export Trade JSON</button><button class="btn small ghost" onclick="closeModal()">✕ Close</button></div></div><div class="dialogBody" id="dialogBody"></div></div></div>
 <div id="zoomOverlay" class="zoomOverlay" onclick="closeZoom(event)"><div class="row"><button class="btn" onclick="closeZoom(event,true)">✕ Close</button></div><img id="zoomImage" alt="Chart preview"></div>
 <div id="toast" class="toast"></div>
 <script>
 'use strict';
-const VERSION='1.0.4';const STORAGE_KEY='TRINETRA_DERIVATIVES_FO_V1';const IDB_NAME='TRINETRA_DERIVATIVES_MEDIA';const FILENAME='TRINETRA_DERIVATIVES_STATE.json';
+const VERSION='1.0.10';const STORAGE_KEY='TRINETRA_DERIVATIVES_FO_V1';const IDB_NAME='TRINETRA_DERIVATIVES_MEDIA';const FILENAME='TRINETRA_DERIVATIVES_STATE.json';
 const SEGMENTS=[['IF','Index Future'],['IO','Index Option'],['SF','Stock Future']];const IDX=['NIFTY','BANKNIFTY','FINNIFTY','MIDCPNIFTY','NIFTYNXT50','SENSEX','BANKEX'];
 const FIELDS={symbol:['tradingsymbol','trading symbol','symbol','instrument','scrip','security','instrument name'],side:['trade_type','trade type','transaction_type','transaction type','buy/sell','buy sell','action','side','type'],qty:['quantity','qty','traded quantity','traded qty','filled quantity','filled qty'],price:['price','trade price','average price','avg price','traded price','rate'],date:['trade_date','trade date','date','execution date','order execution date'],time:['trade_time','trade time','time','execution time'],order:['order_id','order id','order number'],trade:['trade_id','trade id','trade number'],segment:['segment','instrument type','instrument_type'],exchange:['exchange'],charges:['charges','brokerage incl taxes','total charges'],expiry:['expiry','expiry date']};
 let state=blankState(),activeNav='dashboard',activeSegment='ALL',activeStatus='ALL',activeDirection='ALL',searchText='',activeTrade=null,detailTab='journal',folderHandle=null,dbPromise=null,mediaURLs={},folderQueue=Promise.resolve(),folderTimer=null,isLoading=false,importPreview=null,currentCsvInput=null;
@@ -890,7 +914,7 @@ function openScanner105(code){const r=scanner105(code);if(!r||!safeLink105(r.url
 function scanHub105(){ensure105();let distinct=scanSymbols105().size,total=state.scannerRuns105.length;return `<div class="heading"><div><h2>Stock Future Scanner Hub</h2><p>TRINETRA-style Scanner → Watchlist → Observation → Trade Journal</p></div><div class="actions"><button class="btn primary" onclick="goto('watchAll')">▤ Watchlists ↗</button><button class="btn" onclick="goto('scanNew')">＋ Add Future Scanner</button></div></div><div class="cards v105-metrics"><div class="metric"><label>Registered scanners</label><strong>${state.scannerCatalog105.length}</strong><small>S01–S06 preset · add more anytime</small></div><div class="metric"><label>CSV snapshots</label><strong>${total}</strong><small>Locally imported scan records</small></div><div class="metric"><label>Unique stock symbols in scans</label><strong>${distinct}</strong><small>Not validated against F&O contracts</small></div><div class="metric"><label>Active watchlist symbols</label><strong>${Object.values(state.watchStocks105).filter(x=>x.active).length}</strong><small>Across WS-01–05 + WS-Self</small></div></div><div class="info warning v105-warning"><b>Scan execution:</b> The six supplied Chartink URLs are saved. Click <b>Open Chartink</b> to run the scan on Chartink, then download/import its CSV here. The exact proprietary scan formulas were not readable from the URLs, so this app does <b>not</b> pretend to calculate them locally or fetch live results. Verify NSE F&O eligibility before stock-futures trading.</div><div class="v105-scan-grid">${scanTiles105()}</div><div class="card"><h3>Future scanners · extensible structure</h3><p class="subtext">Add S07, S08… with a label, timeframe and Chartink link or formula notes. Each new scanner automatically receives its own results, history and watchlist-transfer controls.</p><button class="btn" onclick="goto('scanNew')">＋ Register Another Scanner</button></div>`}
 function addScannerForm105(){let next=state.scannerCatalog105.reduce((m,s)=>Math.max(m,parseInt(String(s.code).replace(/\D/g,''))||0),0)+1;return `<div class="heading"><div><h2>Register a New Stock Scanner</h2><p>Future scanner structure · independent scan history and watchlist linking</p></div><button class="btn" onclick="goto('scanner')">← Scanner Hub</button></div><div class="info warning">Saving a formula/URL does not execute a scan. Chartink result CSVs can be imported later.</div><div class="card"><form onsubmit="addScanner105(event)" class="formgrid"><div class="field"><label>Scanner Code</label><input name="code" required pattern="S[0-9]{2,4}" maxlength="5" value="S${String(next).padStart(2,'0')}"></div><div class="field wide"><label>Scanner Name</label><input name="name" required maxlength="90" placeholder="e.g. Stock FUT RSI 60 Cross"></div><div class="field"><label>Primary Timeframe</label><select name="tf">${['Daily','Weekly','Monthly','Hourly','15 minute','5 minute','Mixed'].map(x=>`<option>${x}</option>`).join('')}</select></div><div class="field wide"><label>Chartink link (optional)</label><input name="url" placeholder="https://chartink.com/screener/..." type="url"></div><div class="field wide"><label>Conditions / Formula / Description (optional)</label><textarea name="description" placeholder="Paste actual filters here for a future engine"></textarea></div><div class="field full"><button class="btn primary">＋ Add Scanner</button></div></form></div>`}
 function addScanner105(ev){ev.preventDefault();let f=new FormData(ev.target),code=String(f.get('code')||'').trim().toUpperCase(),url=String(f.get('url')||'').trim();if(!/^S\d{2,4}$/.test(code)){toast('Scanner code must look like S07 or S010.',true);return}if(scanner105(code)){toast('Scanner code already exists',true);return}if(url&&!safeLink105(url)){toast('Only valid Chartink /screener/ links accepted in this version.',true);return}state.scannerCatalog105.push({code,name:String(f.get('name')||'').trim(),tf:String(f.get('tf')||'Daily'),url,description:String(f.get('description')||'').trim(),hint:String(f.get('name')||''),createdAt:today105(),mode:'External Chartink + CSV import'});saveLocal();toast(code+' added to Scanner Hub');goto('scan_'+code)}
-function scannerOne105(code){let s=scanner105(code);if(!s)return '<div class="empty">Scanner not registered.</div>';let run=lastRun105(code),rows=(run?.rows||[]).filter(r=>(!scanFilter105||r.symbol.includes(scanFilter105.toUpperCase())||String(r.name||'').toUpperCase().includes(scanFilter105.toUpperCase()))),history=state.scannerRuns105.filter(r=>r.scanner===code).slice(-15).reverse();return `<div class="heading"><div><h2>${esc(code)} · ${esc(s.name)}</h2><p>${esc(s.tf||'Custom')} · Stock future candidates · ${run?'Latest CSV: '+displayDate105(run.at):'No scanner CSV imported yet'}</p></div><div class="actions"><button class="btn" onclick="goto('scanner')">← Hub</button>${safeLink105(s.url)?`<button class="btn primary" onclick="openScanner105('${esc(code)}')">↗ Run on Chartink</button>`:''}<button class="btn" onclick="goto('watchAll')">Watchlist Overview ↗</button></div></div><div class="info warning v105-warning"><b>External scanner:</b> open Chartink, run this particular scan and export its Stock CSV. Import below to store a dated snapshot and assign stocks to your WS lists. The formula is not being independently computed inside this app.</div><div class="card"><div class="row justify"><div><h3>Latest Scanner Record · ${esc(code)}</h3><p class="subtext">${run?`${run.rows.length} stock row(s) · Source ${esc(run.filename)} · ${displayDate105(run.at)} · ${esc(run.note||'')}`:'No results imported. You can start by adding a manual candidate.'}</p></div><div class="actions"><button class="btn small" onclick="exportScannerCsv105('${esc(code)}')">↓ Latest Results CSV</button><button class="btn small" onclick="window.print()">⎙ Print</button></div></div><div class="v105-toolbar"><label class="upload">⇧ Import Chartink CSV<input type="file" accept=".csv,.txt,text/csv" style="display:none" onchange="scanReadCsv105('${esc(code)}',this.files[0]);this.value=''"></label><form onsubmit="scanManualAdd105(event,'${esc(code)}')" class="v105-inlineform"><input class="text" name="symbol" required placeholder="Add stock symbol (manual)" maxlength="28"><button class="btn">＋ Add Stock</button></form><input class="text v105-search" placeholder="Search latest scanner stocks" value="${esc(scanFilter105)}" oninput="scanFilter105=this.value;filterScanRows105(this.value)"></div><div id="v105-csvpreview">${scanPreview105?.code===code?scanPreviewHtml105():''}</div><div id="v105-scanresults">${scanRows105(code,rows)}</div></div><div class="card"><h3>Scan Run History · ${esc(code)}</h3>${history.length?`<div class="tableWrap"><table><thead><tr><th>Import Date / Time</th><th>Source</th><th>Matches</th><th>View Snapshot</th></tr></thead><tbody>${history.map(r=>`<tr><td>${displayDate105(r.at)}</td><td>${esc(r.filename)}</td><td>${r.rows.length}</td><td><button class="btn small" onclick="viewScanSnapshot105('${esc(r.id)}')">View ↗</button></td></tr>`).join('')}</tbody></table></div>`:'<div class="empty">Scan history will appear after CSV imports.</div>'}<p class="hint">Each scanner keeps up to 30 recent dated CSV snapshots to avoid exhausting browser storage. Watchlist observation/history records are separate.</p></div><div class="card"><h3>Scanner Definition / Source</h3><div class="row"><span class="pill">${esc(s.tf||'Custom')}</span><span>${esc(s.url||'No Chartink link saved')}</span></div><p class="subtext">${esc(s.description||'Source URL saved; exact condition filters not imported / verified yet.')}</p><div class="row"><button class="btn small" onclick="editScanner105('${esc(code)}')">✎ Edit Description / Link</button>${!V105_SCANNERS.some(x=>x.code===code)?`<button class="btn small danger" onclick="removeScanner105('${esc(code)}')">Delete Custom Scanner</button>`:''}</div></div>`}
+function scannerOne105(code){let s=scanner105(code);if(!s)return '<div class="empty">Scanner not registered.</div>';let run=lastRun105(code),rows=(run?.rows||[]).filter(r=>(!scanFilter105||r.symbol.includes(scanFilter105.toUpperCase())||String(r.name||'').toUpperCase().includes(scanFilter105.toUpperCase()))),history=runsOf106(code).slice(-15).reverse();return `<div class="heading"><div><h2>${esc(code)} · ${esc(s.name)}</h2><p>${esc(s.tf||'Custom')} · Stock future candidates · ${run?'Latest CSV: '+displayDate105(run.at):'No scanner CSV imported yet'}</p></div><div class="actions"><button class="btn" onclick="goto('scanner')">← Hub</button>${safeLink105(s.url)?`<button class="btn primary" onclick="openScanner105('${esc(code)}')">↗ Run on Chartink</button>`:''}<button class="btn" onclick="goto('watchAll')">Watchlist Overview ↗</button></div></div><div class="info warning v105-warning"><b>External scanner:</b> open Chartink, run this particular scan and export its Stock CSV. Import below to store a dated snapshot and assign stocks to your WS lists. The formula is not being independently computed inside this app.</div><div class="card"><div class="row justify"><div><h3>Latest Scanner Record · ${esc(code)}</h3><p class="subtext">${run?`${run.rows.length} stock row(s) · Source ${esc(run.filename)} · ${displayDate105(run.at)} · ${esc(run.note||'')}`:'No results imported. You can start by adding a manual candidate.'}</p></div><div class="actions"><button class="btn small" onclick="exportScannerCsv105('${esc(code)}')">↓ Latest Results CSV</button><button class="btn small" onclick="window.print()">⎙ Print</button></div></div><div class="v105-toolbar"><label class="upload">⇧ Import Chartink CSV<input type="file" accept=".csv,.txt,text/csv" style="display:none" onchange="scanReadCsv105('${esc(code)}',this.files[0]);this.value=''"></label><form onsubmit="scanManualAdd105(event,'${esc(code)}')" class="v105-inlineform"><input class="text" name="symbol" required placeholder="Add stock symbol (manual)" maxlength="28"><button class="btn">＋ Add Stock</button></form><input class="text v105-search" placeholder="Search latest scanner stocks" value="${esc(scanFilter105)}" oninput="scanFilter105=this.value;filterScanRows105(this.value)"></div><div id="v105-csvpreview">${scanPreview105?.code===code?scanPreviewHtml105():''}</div><div id="v105-scanresults">${scanRows105(code,rows)}</div></div><div class="card"><h3>Scan Run History · ${esc(code)}</h3>${history.length?`<div class="tableWrap"><table><thead><tr><th>Import Date / Time</th><th>Source</th><th>Matches</th><th>View Snapshot</th></tr></thead><tbody>${history.map(r=>`<tr><td>${displayDate105(r.at)}<br><span class="pill seg">${esc(fo112TagText(r))}</span></td><td>${esc(r.filename)}</td><td>${r.rows.length}</td><td><button class="btn small" onclick="viewScanSnapshot105('${esc(r.id)}')">View ↗</button></td></tr>`).join('')}</tbody></table></div>`:'<div class="empty">Scan history will appear after CSV imports.</div>'}<p class="hint">Each scanner keeps up to 30 recent dated CSV snapshots to avoid exhausting browser storage. Watchlist observation/history records are separate.</p></div><div class="card"><h3>Scanner Definition / Source</h3><div class="row"><span class="pill">${esc(s.tf||'Custom')}</span><span>${esc(s.url||'No Chartink link saved')}</span></div><p class="subtext">${esc(s.description||'Source URL saved; exact condition filters not imported / verified yet.')}</p><div class="row"><button class="btn small" onclick="editScanner105('${esc(code)}')">✎ Edit Description / Link</button>${!V105_SCANNERS.some(x=>x.code===code)?`<button class="btn small danger" onclick="removeScanner105('${esc(code)}')">Delete Custom Scanner</button>`:''}</div></div>`}
 function scanRows105(code,rows){return rows.length?`<div class="tableWrap"><table><thead><tr><th>Stock / Underlying</th><th>Stock Name</th><th>CMP</th><th>% Chg</th><th>Volume</th><th>Watchlist</th><th>Direction</th><th>Observation</th></tr></thead><tbody>${rows.map(r=>{let w=wsRec105(r.symbol);return `<tr data-scansym="${esc(r.symbol)}" data-scanname="${esc(r.name||'').toUpperCase()}"><td><b>${esc(r.symbol)}</b></td><td>${esc(r.name||'—')}</td><td>${r.price===null?'—':'₹'+fmt(r.price)}</td><td>${r.pct===null?'—':fmt(r.pct,2)+'%'}</td><td>${r.volume===null?'—':fmt(r.volume,0)}</td><td><select aria-label="Assign ${esc(r.symbol)} watchlist" class="text v105-select" onchange="watchMove105('${esc(r.symbol)}',this.value,'${esc(code)}')">${wsOptions105(w?.active?w.list:'')}</select></td><td><select class="text v105-select" aria-label="${esc(r.symbol)} trade direction" onchange="watchDirection105('${esc(r.symbol)}',this.value)">${htmlOptions105(w?.direction||'BOTH',[['BOTH','Both'],['LONG','Long'],['SHORT','Short']])}</select></td><td><button class="btn small" onclick="openWatchObservation105('${esc(r.symbol)}')">Chart / Notes ↗</button></td></tr>`}).join('')}</tbody></table></div>`:'<div class="empty">No matching symbols yet. Run the Chartink scan externally and import its results, or add stock symbols manually.</div>'}
 function filterScanRows105(v){scanFilter105=v;document.querySelectorAll('#v105-scanresults tbody tr[data-scansym]').forEach(tr=>{tr.style.display=(tr.dataset.scansym.includes(v.toUpperCase())||tr.dataset.scanname.includes(v.toUpperCase()))?'':'none'})}
 function scanManualAdd105(ev,code){ev.preventDefault();let s=sym105(new FormData(ev.target).get('symbol'));if(!s){toast('Use a valid NSE stock symbol',true);return}let r=lastRun105(code);if(!r){r={id:'scan-'+id(),scanner:code,at:today105(),filename:'Manual stock additions',note:'Manual rows (not calculated scan results)',rows:[]};state.scannerRuns105.push(r)}if(!r.rows.some(x=>x.symbol===s))r.rows.unshift({symbol:s,name:'',price:null,pct:null,volume:null,source:'Manual'});saveLocal();toast('Manual stock '+s+' recorded under '+code);render()}
@@ -1234,16 +1258,17 @@ function commitBatch107(){
   for(const code of zeros)jobs.push({code,file:'Confirmed zero hits',rows:[],invalid:0,source:'ZERO'});
   // Validate before committing any changes (atomic batch).
   for(const job of jobs){const latest=lastRun105(job.code);if(latest&&runDay106(latest)>date)throw Error(job.code+' has a newer run ('+runDay106(latest)+'). Import runs chronologically.');}
-  const overwrites=jobs.filter(j=>runsOf106(j.code).some(r=>runDay106(r)===date));
+  for(const j of jobs)j.runTag=fo112RunTagForCode(j.code);
+  const overwrites=jobs.filter(j=>runsOf106(j.code).some(r=>runDay106(r)===date&&(!r.runTag||r.runTag===j.runTag)));
   if(overwrites.length&&!confirm('Replace '+overwrites.length+' existing scanner run(s) for '+date+'? Other days and all Watchlist/Chart records will be preserved.'))return;
   if(zeros.length&&!confirm('Confirmed ZERO: '+zeros.join(', ')+'\n\nMark these scanners as run with 0 matching stocks? The previous stocks may appear in DROPPED.'))return;
  }catch(e){toast('Scanner import blocked: '+e.message,true);return}
  const now=today105();let next=state.scannerRuns105.slice();
- for(const j of jobs){next=next.filter(r=>!(r.scanner===j.code&&runDay106(r)===date));next.push({id:'scan-'+id(),scanner:j.code,at:now,marketDate:date,filename:j.file,note:j.source==='ZERO'?'Confirmed zero — user reported no Chartink result':'Batch CSV Import · external Chartink output',rows:j.rows,source:j.source});}
+ for(const j of jobs){next=next.filter(r=>!(r.scanner===j.code&&runDay106(r)===date&&(!r.runTag||r.runTag===j.runTag)));next.push({id:'scan-'+id(),scanner:j.code,at:now,marketDate:date,runTag:j.runTag,filename:j.file,note:j.source==='ZERO'?'Confirmed zero — user reported no Chartink result':'Batch CSV Import · external Chartink output',rows:j.rows,source:j.source});}
  for(const j of jobs){const same=next.filter(r=>r.scanner===j.code);if(same.length>30){const old=new Set(same.slice(0,-30).map(r=>r.id));next=next.filter(r=>!old.has(r.id));}}
  state.scannerRuns105=next;
  for(const j of jobs){for(const x of j.rows){const w=state.watchStocks105?.[x.symbol];if(w){w.lastScanAt=now;w.scanSources=[...new Set([...(w.scanSources||[]),j.code])];if(!w.name&&x.name)w.name=x.name;w.latestPrice=x.price??w.latestPrice;}}}
- state.scanBatchAudits107.push({id:'batch-'+id(),date,at:now,resultCodes:jobs.filter(j=>j.source==='CSV').map(j=>j.code),zeroCodes:zeros,notRunCodes:stats.notrun,files:jobs.map(j=>({scanner:j.code,filename:j.file,count:j.rows.length,ignoredInvalid:j.invalid}))});
+ state.scanBatchAudits107.push({id:'batch-'+id(),date,at:now,weeklyRunTag:fo112_week,monthlyRunTag:fo112_month,resultCodes:jobs.filter(j=>j.source==='CSV').map(j=>j.code),zeroCodes:zeros,notRunCodes:stats.notrun,files:jobs.map(j=>({scanner:j.code,filename:j.file,count:j.rows.length,ignoredInvalid:j.invalid}))});
  saveLocal();closeBatch107();motherFilter106='ALL';goto('mother');toast('✓ '+jobs.length+' scanner runs saved · '+stats.notrun.length+' NOT RUN unchanged');
 }
 function scannerStatus107(code,sym,rows){
@@ -1359,7 +1384,366 @@ manualForm=function(editId){
 const renderBefore108=render;
 render=function(...args){const v=renderBefore108.apply(this,args);if(activeNav==='new'){
  const f=document.getElementById('executionForm');if(f){['input','change'].forEach(ev=>f.addEventListener(ev,chargeLive108));chargeLive108()}}
- let b=document.querySelector('.brand > small');if(b)b.textContent='DERIVATIVES · TRADE JOURNAL · v1.0.9';document.title='TRINETRA F&O · Derivatives Trading Journal v1.0.9';return v;
+ let b=document.querySelector('.brand > small');if(b)b.textContent='DERIVATIVES · TRADE JOURNAL · v1.0.10';document.title='TRINETRA F&O · Derivatives Trading Journal v1.0.10';return v;
+};
+
+/* TRINETRA F&O v1.0.10 — tradebook-first Zerodha import workflow.
+   This code modifies the importer only; existing storage keys and workspace schemas remain intact.
+   Tradebook is authoritative, Order CSV optional. No data is imported until user confirms. */
+const FO110_VERSION='1.0.10';
+const FO110_FIELDS={...FIELDS, time:['order_execution_time','order execution time','trade_time','trade time','time','execution time','timestamp']};
+let fo110_lastResult=null;
+function fo110HeaderIndex(headers,names){return guessCol(headers,names)}
+function fo110Format(headers){
+ const h=headers.map(cleanHeader);
+ if(h.includes('tradeid')&&h.includes('tradedate'))return 'TRADEBOOK';
+ if(h.includes('status')&&h.includes('avgprice')&&h.some(x=>x==='qty'||x==='quantity'))return 'ORDERBOOK';
+ return 'GENERIC';
+}
+function fo110Field(row,map,key){return map[key]>=0?String(row[map[key]]??'').trim():''}
+function fo110Qty(raw,fmt){
+ const s=String(raw||'').trim().replace(/,/g,'');
+ if(fmt==='ORDERBOOK'&&s.includes('/'))return Number(s.split('/')[0]);
+ return Number(s);
+}
+function fo110CsvNum(raw){const n=Number(String(raw||'').replace(/[₹,\s]/g,''));return n}
+function fo110ExistingTradeId(tradeid,symbol){
+ return Boolean(tradeid&&state.transactions.some(t=>String(t.tradeid||'')===String(tradeid)&&String(t.symbol||'').toUpperCase()===symbol));
+}
+function fo110Record(p,index){
+ const r=p.rows[index],map=p.mappings,f=k=>fo110Field(r,map,k);
+ const symbol=f('symbol').toUpperCase().replace(/\s+/g,''),side=normSide(f('side'));
+ const rawDate=f('date')||f('time');
+ const date=normDate(rawDate),time=normTime(f('time')||f('date'));
+ const qty=fo110Qty(f('qty'),p.kind),price=fo110CsvNum(f('price'));
+ const orderid=f('order'),tradeid=f('trade');
+ const seg=guessSegment(symbol,f('segment'),f('exchange'),p.fallback||'SF');
+ const status=p.statusIdx>=0?String(r[p.statusIdx]??'').trim().toUpperCase():'';
+ const note=[];
+ if(p.kind==='ORDERBOOK'&&status&&!['COMPLETE','COMPLETED','FILLED','EXECUTED'].includes(status))note.push('Not executed ('+status+')');
+ if(seg==='INVALID')note.push('Stock option not supported');
+ if(!symbol||!side||!date||!Number.isFinite(qty)||qty<=0||!Number.isFinite(price)||price<0)note.push('Invalid / zero quantity or missing fields');
+ let key;
+ if(tradeid||orderid)key=JSON.stringify([date,symbol,side,qty,price,orderid,tradeid,time]);
+ else key=JSON.stringify([date,time,symbol,side,qty,price,'', '',index]);
+ const id='Z-'+hash(key);
+ const exactDup=state.transactions.some(t=>t.id===id)||fo110ExistingTradeId(tradeid,symbol);
+ if(exactDup)note.push('Already in journal');
+ // An Order CSV is an aggregate execution. Mixing it with tradebook fills
+ // for the same contract, side and day can double-count P&L. Never auto-merge.
+ const orderOverlap=p.kind==='TRADEBOOK'&&state.transactions.some(t=>(t.csvFormat110==='ORDERBOOK')&&String(t.at||'').slice(0,10)===date&&String(t.symbol||'').toUpperCase()===symbol&&t.side===side);
+ const tradeOverlap=p.kind==='ORDERBOOK'&&state.transactions.some(t=>(t.csvFormat110==='TRADEBOOK'||t.tradeid)&&String(t.at||'').slice(0,10)===date&&String(t.symbol||'').toUpperCase()===symbol&&t.side===side);
+ if(orderOverlap||tradeOverlap)note.push('Possible Order/Tradebook overlap — review first');
+ const valid=note.length===0;
+ return {index,rowNumber:index+2,symbol,side,date,time,qty,price,seg,status,orderid,tradeid,id,valid,reason:note.join(' · ')};
+}
+function fo110Records(){if(!importPreview)return [];return importPreview.rows.map((_,i)=>fo110Record(importPreview,i))}
+function fo110Selection(){let p=importPreview;if(!p)return [];return fo110Records().filter(r=>r.valid&&p.selected?.has(r.index))}
+function fo110SelectRow(i,checked){let p=importPreview;if(!p)return;let row=fo110Record(p,Number(i));if(!row.valid)return;if(checked)p.selected.add(Number(i));else p.selected.delete(Number(i));fo110UpdateCount()}
+function fo110UpdateCount(){let p=importPreview;if(!p)return;let rows=fo110Records();let n=rows.filter(r=>r.valid&&p.selected.has(r.index)).length;let b=document.getElementById('fo110ImportButton'),c=document.getElementById('fo110Count');if(b){b.textContent='Import '+n+' selected executed row'+(n===1?'':'s');b.disabled=n===0}if(c)c.textContent=n+' selected · '+rows.filter(r=>r.valid).length+' eligible · '+(rows.length-rows.filter(r=>r.valid).length)+' excluded / review'}
+function fo110Bulk(mode){let p=importPreview;if(!p)return;for(let r of fo110Records()){
+  if(!r.valid)continue;
+  if(mode==='visible'&&p.filter&&!r.symbol.includes(p.filter.toUpperCase())&&!r.date.includes(p.filter))continue;
+  if(mode==='none')p.selected.delete(r.index);else p.selected.add(r.index);
+ }
+ document.getElementById('csvPreview').innerHTML=renderImportPreview();
+}
+function fo110SetFilter(x){if(!importPreview)return;importPreview.filter=String(x||'').trim();let el=document.getElementById('csvPreview');if(el){el.innerHTML=renderImportPreview();let search=document.getElementById('fo110Filter');if(search){search.focus();search.setSelectionRange(search.value.length,search.value.length)}}}
+function fo110MapChanged(k,v){let p=importPreview;if(!p)return;p.mappings[k]=Number(v);p.selected=new Set();document.getElementById('csvPreview').innerHTML=renderImportPreview()}
+function fo110FallbackChanged(v){if(!importPreview)return;importPreview.fallback=v;importPreview.selected=new Set();document.getElementById('csvPreview').innerHTML=renderImportPreview()}
+async function fo110ReadCsv(f){
+ if(!f)return;
+ try{
+  const rows=csvParse(await f.text());if(rows.length<2){toast('CSV has no records',true);return}
+  let headers=rows.shift().map(x=>String(x).trim());let kind=fo110Format(headers);
+  let mappings={};for(const k of Object.keys(FO110_FIELDS))mappings[k]=guessCol(headers,FO110_FIELDS[k]);
+  // Zerodha Orders CSV has a combined Time field with date + time.
+  if(kind==='ORDERBOOK'&&mappings.date<0)mappings.date=guessCol(headers,['Time']);
+  if(mappings.time<0&&mappings.date>=0&&kind==='ORDERBOOK')mappings.time=mappings.date;
+  let p={file:f.name,headers,rows,mappings,kind,statusIdx:fo110HeaderIndex(headers,['Status','Order Status']),selected:new Set(),fallback:'SF',filter:''};
+  importPreview=p;
+  let recs=fo110Records();for(const r of recs)if(r.valid)p.selected.add(r.index);
+  let el=document.getElementById('csvPreview');if(el)el.innerHTML=renderImportPreview();
+  toast(kind+' CSV read: '+rows.length+' rows · '+recs.filter(x=>x.valid).length+' eligible. Review the selection.');
+ }catch(e){console.error(e);toast('CSV read failed: '+e.message,true)}
+}
+function fo110Preview(){let p=importPreview;if(!p)return '';
+ const records=fo110Records(),eligible=records.filter(x=>x.valid).length;
+ const visible=records.filter(r=>!p.filter||r.symbol.includes(p.filter.toUpperCase())||r.date.includes(p.filter)||r.reason.toLowerCase().includes(p.filter.toLowerCase()));
+ const kindLabel=p.kind==='TRADEBOOK'?'Zerodha Tradebook (recommended)':p.kind==='ORDERBOOK'?'Zerodha Orders (optional, provisional)':'Other CSV (check mapping)';
+ const warning=p.kind==='ORDERBOOK'?'<div class="info warning"><b>Orders CSV is optional.</b> Complete/filled rows only; Qty. 65/65 means 65 executed. It may aggregate partial fills. If you later import Tradebook for the same orders, undo/remove the earlier order import first to avoid counting the position twice.</div>':p.kind==='TRADEBOOK'?'<div class="info"><b>Tradebook is the primary source.</b> No need to import Orders CSV. Exact trade IDs prevent repeated imports; order execution timestamp preserves intraday sequence. Select only the fills you want recorded.</div>':'<div class="info warning">Unknown CSV layout. Confirm mappings and selected rows carefully.</div>';
+ const statusPill=r=>!r.valid?'<span class="pill">'+esc(r.reason)+'</span>':'<span class="pill long">Ready</span>';
+ return `<div class="card"><h3>2 · Review ${esc(kindLabel)}</h3><p class="hint">File: <b>${esc(p.file)}</b> · ${records.length} rows · ${eligible} eligible. The preview is NOT imported yet.</p>${warning}<div class="formgrid">${Object.keys(FO110_FIELDS).map(k=>`<div class="field"><label>${k.toUpperCase()} ${['symbol','side','qty','price','date'].includes(k)?'*':''}</label><select class="text" style="width:100%" id="map_${k}" onchange="fo110MapChanged('${k}',this.value)"><option value="-1">— Not in CSV —</option>${p.headers.map((h,i)=>`<option value="${i}" ${i===p.mappings[k]?'selected':''}>${esc(h)} [${i+1}]</option>`).join('')}</select></div>`).join('')}<div class="field"><label>Default segment if unknown</label><select onchange="fo110FallbackChanged(this.value)">${SEGMENTS.map(([k,t])=>`<option value="${k}" ${p.fallback===k?'selected':''}>${t}</option>`).join('')}</select></div></div></div>
+ <div class="card"><div class="row justify"><div><h3>3 · Select executions to import</h3><p class="subtext" id="fo110Count">${fo110Selection().length} selected · ${eligible} eligible · ${records.length-eligible} excluded / review</p></div><div class="toolbar"><button class="btn small" onclick="fo110Bulk('all')">Select all eligible</button><button class="btn small" onclick="fo110Bulk('none')">Deselect all</button><button class="btn small" onclick="fo110Bulk('visible')">Select filtered</button></div></div><label class="field" style="max-width:440px"><span class="hint">Filter by symbol, date or exclusion reason</span><input id="fo110Filter" class="text" value="${esc(p.filter)}" placeholder="e.g. NIFTY or 2026-11-04" oninput="fo110SetFilter(this.value)"></label><div class="tableWrap fo110-table"><table><thead><tr><th>Use</th><th>CSV row</th><th>Date / Time</th><th>Symbol</th><th>Side</th><th>Executed Qty</th><th>Price</th><th>Check</th></tr></thead><tbody>${visible.map(r=>`<tr style="${!r.valid?'opacity:.7':''}"><td><input aria-label="Import row ${r.rowNumber}" type="checkbox" ${p.selected.has(r.index)&&r.valid?'checked':''} ${r.valid?'':'disabled'} onchange="fo110SelectRow(${r.index},this.checked)"></td><td>${r.rowNumber}</td><td>${esc(r.date)} ${esc(r.time)}</td><td><b>${esc(r.symbol||'—')}</b></td><td>${esc(r.side||'—')}</td><td>${Number.isFinite(r.qty)?fmt(r.qty,0):'—'}</td><td>${Number.isFinite(r.price)?money(r.price):'—'}</td><td>${statusPill(r)}</td></tr>`).join('')}</tbody></table></div><div class="row justify"><span class="hint">Nothing changes until you confirm. Unsupported, cancelled, zero-quantity and existing Trade IDs are excluded automatically.</span><button id="fo110ImportButton" class="btn primary" ${fo110Selection().length?'':'disabled'} onclick="fo110ImportConfirmed()">Import ${fo110Selection().length} selected executed row${fo110Selection().length===1?'':'s'}</button></div></div>${fo110History()}`;
+}
+function fo110History(){const b=(state.meta?.foImportBatches110||[]).slice().reverse();if(!b.length)return '<div class="card"><h3>Import history / Undo</h3><p class="hint">No recorded CSV imports in this version yet. Older imports remain in the journal and can be edited individually.</p></div>';
+ return `<div class="card"><h3>Import history / Undo</h3><p class="hint">Undo removes only executions added by that batch; it never deletes scanner history, capital data or older trades. A pre-undo JSON safety copy is downloaded.</p><div class="tableWrap"><table><thead><tr><th>Imported</th><th>CSV file</th><th>Type</th><th>New rows</th><th>Action</th></tr></thead><tbody>${b.map(x=>`<tr><td>${esc(String(x.at||'').slice(0,19).replace('T',' '))}</td><td>${esc(x.file)}</td><td>${esc(x.kind)}</td><td>${x.ids?.length||0}</td><td>${x.undone?'<span class="pill">Undone</span>':`<button class="btn small danger" onclick="fo110UndoBatch('${esc(x.id)}')">Undo this import</button>`}</td></tr>`).join('')}</tbody></table></div></div>`;
+}
+function fo110ImportConfirmed(){let p=importPreview;if(!p)return;
+ for(let k of ['symbol','side','qty','price','date'])if(p.mappings[k]<0){toast('Map required field: '+k,true);return}
+ const selected=fo110Selection();if(!selected.length){toast('No valid rows selected',true);return}
+ const unique=[];const seen=new Set(state.transactions.map(t=>t.id));const tradeIds=new Set(state.transactions.filter(t=>t.tradeid).map(t=>String(t.symbol).toUpperCase()+'|'+t.tradeid));let skipped=0;
+ for(const r of selected){const tradeKey=r.symbol+'|'+r.tradeid;if(seen.has(r.id)||(r.tradeid&&tradeIds.has(tradeKey))){skipped++;continue}unique.push(r);seen.add(r.id);if(r.tradeid)tradeIds.add(tradeKey)}
+ if(!unique.length){toast('All selected rows already exist',true);return}
+ if(!confirm(`Import ${unique.length} executed row(s) from ${p.file}?\n\nCSV: ${p.kind}\nUnselected / excluded: ${p.rows.length-unique.length}\n\nThis will add transactions to the LIVE journal. You can Undo this batch from Import history.`))return;
+ const batchId='FO110-'+id(),ids=[];
+ for(const r of unique){const f=k=>fo110Field(p.rows[r.index],p.mappings,k),charge=fo110CsvNum(f('charges'))||0;
+  const tx={id:r.id,symbol:r.symbol,segment:r.seg,side:r.side,at:r.date+'T'+r.time,qty:r.qty,price:r.price,charges:Math.max(0,charge),chargeMode:charge>0?'ACTUAL':'AUTO',orderid:r.orderid,tradeid:r.tradeid,seq:r.index+1,source:p.kind==='TRADEBOOK'?'Zerodha Tradebook CSV':p.kind==='ORDERBOOK'?'Zerodha Order CSV':'Zerodha CSV',csvFormat110:p.kind,importBatch110:batchId,remark:'Imported from '+p.file};
+  state.transactions.push(tx);ids.push(tx.id);
+ }
+ state.meta=state.meta||{};state.meta.foImportBatches110=state.meta.foImportBatches110||[];
+ state.meta.foImportBatches110.push({id:batchId,file:p.file,kind:p.kind,at:new Date().toISOString(),ids,undone:false});
+ state.meta.lastImport={added:ids.length,dupes:skipped,invalid:p.rows.length-selected.length,unsupported:0,file:p.file,at:new Date().toISOString(),rejected:[]};
+ importPreview=null;saveLocal();fo110_lastResult=`Imported ${ids.length} ${p.kind} execution(s). ${skipped} already present.`;goto('all');toast(fo110_lastResult);
+}
+function fo110UndoBatch(batchId){
+ const batch=(state.meta?.foImportBatches110||[]).find(x=>x.id===batchId);if(!batch||batch.undone){toast('Import batch unavailable',true);return}
+ const matches=state.transactions.filter(t=>t.importBatch110===batch.id&&batch.ids.includes(t.id));if(!matches.length){toast('No unchanged batch records remain. Use Edit Executions if previously modified.',true);return}
+ if(!confirm(`UNDO import: ${batch.file}\nRemove ${matches.length} execution(s)?\n\nA JSON copy of the state will download before deletion. Existing charts/notes are not erased, but their calculated trade cycles may change.`))return;
+ download('TRINETRA_FO_BEFORE_UNDO_'+isoLocal().replace(/[:T]/g,'-')+'.json',JSON.stringify({format:'TRINETRA_FO_STATE_BEFORE_UNDO',state},null,2),'application/json');
+ const ids=new Set(matches.map(t=>t.id));state.transactions=state.transactions.filter(t=>!ids.has(t.id));batch.undone=true;batch.undoneAt=new Date().toISOString();
+ saveLocal();render();toast('Undid '+matches.length+' execution(s) from '+batch.file);
+}
+const fo110OldImportPage=importPage;
+importPage=function(){return `<div class="heading"><div><h2>Zerodha CSV Import · Tradebook first</h2><p>Tradebook CSV = regular workflow · Orders CSV = optional same-day preview</p></div></div><div class="card"><h3>1 · Choose Zerodha F&O CSV</h3><div class="row"><input id="csvFile" type="file" accept=".csv,.txt,text/csv,text/plain" onchange="fo110ReadCsv(this.files[0])"><button class="btn" onclick="importPreview=null;render()">Clear preview</button></div><p class="subtext"><b>Recommended:</b> upload your Zerodha F&O Tradebook regularly (same or next day). No Orders CSV needed. The app reads trade_id, order_id, trade_date, order_execution_time, quantity and price; you can select which executed rows to add. If you use Orders CSV instead, import only completed orders and avoid importing the same fills again from Tradebook without first undoing the Order CSV batch.</p></div><div id="csvPreview">${importPreview?renderImportPreview():'<div class="info">No CSV selected. You can upload a historical Tradebook directly; no separate Order CSV is required.</div>'+fo110History()}</div>`};
+readCsv=fo110ReadCsv;
+renderImportPreview=fo110Preview;
+importCsvConfirmed=fo110ImportConfirmed;
+const fo110RenderBefore=render;
+render=function(...args){const ret=fo110RenderBefore.apply(this,args);const label=document.querySelector('.brand > small');if(label)label.textContent='DERIVATIVES · TRADE JOURNAL · v1.0.10';document.title='TRINETRA F&O · Derivatives Trading Journal v1.0.10';return ret};
+
+
+/* v1.0.11 — short-only scanner research, Long-style two-tab scanner import.
+   UI only: leave old watch direction keys and all trades untouched for migration safety. */
+const FO111_VERSION='1.0.12';
+const FO111_DESC={
+ S01:['Daily','701 · D RSI 60 BE-V','Daily RSI 60 BE-V setup'],
+ S02:['Weekly','702 · W RSI 60 BE-V','Weekly RSI 60 BE-V setup'],
+ S03:['Monthly','703 · M RSI 60 BE-V','Monthly RSI 60 BE-V setup'],
+ S04:['Daily','704 · D-BE ORIGIN','Daily BE Origin setup'],
+ S05:['Weekly','705 · W-BE ORIGIN','Weekly BE Origin setup'],
+ S06:['Hourly','706 · H-BE ORIGIN','Hourly BE Origin setup']
+};
+function fo111Legend(){
+ const scans=Object.entries(FO111_DESC).map(([code,arr])=>`<button class="fo111-legend-item" onclick="goto('scan_${code}')" title="Open ${esc(code)} scanner"><span class="fo111-code">${esc(code)}</span><span class="fo111-legend-copy"><b>${esc(arr[1])}</b><small>${esc(arr[2])} · ${esc(arr[0])}</small></span></button>`).join('');
+ return `<div class="fo111-legend"><div class="fo111-legend-head"><strong>SHORT SCANNER REFERENCE · S01–S06</strong><small>Names reflect your Chartink scanner labels; exact technical conditions remain on Chartink.</small></div><div class="fo111-legend-grid">${scans}</div></div>`;
+}
+// Remove stock-research Direction widgets, not the trade direction fields.
+function fo111StripResearchDirection(markup){
+ return markup
+  .replace(/<th>Direction<\/th>|<th>DIRECTION<\/th>/g,'')
+  .replace(/<td><select\b[^>]*onchange="watchDirection105\([^"<>]*"[^>]*>[\s\S]*?<\/select><\/td>/g,'');
+}
+const fo111MotherTableBefore=motherTable106;
+motherTable106=function(rows){return fo111StripResearchDirection(fo111MotherTableBefore(rows));};
+const fo111ScanRowsBefore=scanRows105;
+scanRows105=function(code,rows){return fo111StripResearchDirection(fo111ScanRowsBefore(code,rows));};
+const fo111WatchRowsBefore=watchRows105;
+watchRows105=function(rows){return fo111StripResearchDirection(fo111WatchRowsBefore(rows));};
+const fo111MotherBefore=motherPage106;
+motherPage106=function(){
+ let html=fo111MotherBefore()
+  .replace('MOTHER · Stock Futures Universe','MOTHER · Short Trading Universe')
+  .replace('Scanner Hub →','Short Scanner Hub →')
+  .replace('latest scanner snapshots + Watchlists','SHORT scanner snapshots + Watchlists');
+ const insert='<div class="card"><div class="row justify"><h3>';
+ let at=html.indexOf(insert);
+ if(at>=0)html=html.slice(0,at)+fo111Legend()+html.slice(at);
+ return html;
+};
+const fo111HubBefore=scanHub105;
+scanHub105=function(){return fo111HubBefore()
+ .replace('Stock Future Scanner Hub','Stock Futures · Short Scanner Hub')
+ .replace('SCANNER COMMAND CENTER · Batch Chartink CSV','SHORT SCANNERS · Batch Chartink CSV')
+ .replace('Stock future candidates','SHORT candidates')
+ .replace('S01–S06 Chartink-linked scanners','S01–S06 SHORT Chartink scanners');};
+const fo111ScannerOneBefore=scannerOne105;
+scannerOne105=function(code){return fo111ScannerOneBefore(code)
+ .replace('Stock future candidates','Stock futures · SHORT candidates')
+ .replace('Latest Scanner Record ·','Latest SHORT Scanner Record ·');};
+const fo111WatchPageBefore=watchPage105;
+watchPage105=function(list){return fo111WatchPageBefore(list)
+ .replace('Stock Futures Watchlist','Stock Futures · SHORT Watchlist')
+ .replace(/<select class="text" name="direction">[\s\S]*?<\/select>/,'<input type="hidden" name="direction" value="SHORT">')
+ .replace(/<select class="text" id="v105-watch-dir"[\s\S]*?<\/select>/,'<span class="pill short">SHORT RESEARCH</span>');};
+const fo111WatchObservationBefore=renderWatchObs105;
+renderWatchObs105=function(){
+ fo111WatchObservationBefore();
+ const root=document.getElementById('watchBody105');if(!root)return;
+ root.querySelectorAll('.v105-obs-summary > div').forEach(el=>{if(el.querySelector('small')?.textContent.trim()==='Direction')el.remove()});
+ root.querySelectorAll('.field').forEach(el=>{if(el.querySelector('label')?.textContent.trim()==='Direction')el.remove()});
+};
+const fo111DashboardBefore=renderDashboard;
+renderDashboard=function(c){return fo111DashboardBefore(c)
+ .replace('Stock Futures Research · Scanner & Watchlists','Stock Futures · SHORT Scanners & Watchlists')
+ .replace('S01–S06 Chartink-linked scanners','S01–S06 Chartink SHORT scanners')
+ .replace('⌕ Scanner Hub','⌕ Short Scanner Hub');};
+const fo111NavBefore=nav105;
+nav105=function(){
+ fo111NavBefore();
+ const list=document.getElementById('nav');if(!list)return;
+ list.querySelectorAll('.navTitle').forEach(el=>{
+  if(el.textContent.includes('STOCK FUTURE · SCANNERS'))el.textContent='STOCK FUTURES · SHORT SCANNERS';
+ });
+ list.querySelectorAll('button').forEach(b=>{
+  if(b.textContent.includes('Scanner Hub ·'))b.textContent=b.textContent.replace('Scanner Hub ·','Short Scanner Hub ·');
+ });
+};
+nav=nav105;
+
+// Mimic TRINETRA Long's SCAN INPUT / RUN STATUS two-tab workflow.
+let fo111_tab='input',fo111_zeroInvalid=[];
+const fo111ModalBefore=batchModal107;
+batchModal107=function(){
+ const m=fo111ModalBefore();
+ const title=m.querySelector('.dialogHead h2'),sub=m.querySelector('.dialogHead small');
+ if(title)title.textContent='SHORT Scanner CSV Import Center';
+ if(sub)sub.textContent='TRINETRA Long-style · SCAN INPUT / NOT RUN & RUN STATUS';
+ return m;
+};
+const fo111OpenBatchBefore=openBatch107;
+openBatch107=function(){fo111_tab='input';fo111_zeroInvalid=[];fo111OpenBatchBefore();};
+function fo111ZeroCode(code){
+ let raw=String(code||'').trim().toUpperCase();
+ if(/^70[1-6]$/.test(raw))return 'S'+String(Number(raw)-700).padStart(2,'0');
+ return /^S0[1-6]$/.test(raw)?raw:'';
+}
+function fo111ApplyZeroText(text){
+ let values=String(text||'').split(/[\s,;]+/).map(x=>x.trim()).filter(Boolean),good=new Set(),bad=[];
+ for(let value of values){let code=fo111ZeroCode(value);if(code)good.add(code);else bad.push(value)}
+ fo111_zeroInvalid=bad;
+ document.querySelectorAll('#fo107ZeroGrid input[data-batchzero]').forEach(cb=>{cb.checked=good.has(cb.dataset.batchzero)});
+ const err=document.getElementById('fo111ZeroError');if(err)err.textContent=bad.length?'Unknown scanner code(s): '+bad.join(', ')+'. Use S01–S06 or 701–706.':'';
+ batchStatus107();
+}
+function fo111ZeroCheckboxesChanged(){
+ const input=document.getElementById('fo111ZeroCodes');if(input)input.value=batchSelectedZero107().join(', ');
+ fo111_zeroInvalid=[];
+ const err=document.getElementById('fo111ZeroError');if(err)err.textContent='';
+ batchStatus107();
+}
+function fo111Tab(which){
+ fo111_tab=which==='status'?'status':'input';
+ for(const t of ['input','status']){
+  let p=document.getElementById('fo111Pane'+(t==='input'?'Input':'Status'));
+  if(p)p.style.display=t===fo111_tab?'':'none';
+  let b=document.getElementById('fo111Tab'+(t==='input'?'Input':'Status'));
+  if(b)b.classList.toggle('active',t===fo111_tab);
+ }
+ if(fo111_tab==='status')batchStatus107();
+}
+const fo111CommitBefore=commitBatch107;
+commitBatch107=function(){
+ if(fo111_zeroInvalid.length){fo111Tab('input');toast('Correct unknown confirmed-zero scanner codes before importing.',true);return}
+ fo111CommitBefore();
+};
+batchPage107=function(reset=false){
+ const body=document.getElementById('fo107Body');if(!body)return;
+ const day=reset?isoLocal().slice(0,10):(document.getElementById('fo107Date')?.value||isoLocal().slice(0,10));
+ const checked=reset?[]:batchSelectedZero107();
+ if(reset){fo111_tab='input';fo111_zeroInvalid=[]}
+ body.innerHTML=`<div class="info fo107-info"><b>SHORT Scanner Import:</b> Select S01–S06 Chartink CSVs together. Every scanner has exactly one state: <b>CSV RESULT</b>, <b>CONFIRMED ZERO</b>, or <b>NOT RUN / PREVIOUS UNCHANGED</b>. No trade execution is imported here.</div>
+ <div class="fo111-tabs"><button class="${fo111_tab==='input'?'active':''}" id="fo111TabInput" onclick="fo111Tab('input')">SCAN INPUT</button><button class="${fo111_tab==='status'?'active':''}" id="fo111TabStatus" onclick="fo111Tab('status')">NOT RUN / RUN STATUS</button></div>
+ <div id="fo111PaneInput" style="${fo111_tab==='status'?'display:none':''}">
+  <div class="fo107-row fo107-start"><label class="field"><span>Scanner run date (market date)</span><input id="fo107Date" type="date" value="${esc(day)}"></label></div>
+  <div class="fo111-inputZone"><label class="fo107-filepick">＋ Select Multiple CSV Files<input id="fo107FilePick" type="file" accept=".csv,.txt,text/csv" multiple onchange="batchLoad107(this.files)"></label><p class="fo111-steps">Choose S01–S06 / 701–706 files in one selection. Each CSV is checked for its scanner code and Symbol column before import.</p><button class="btn small" onclick="batchFiles107=[];batchPage107()">Clear selected files</button></div>
+  <section class="fo107-part"><h3>SCAN INPUT <small>· ${batchFiles107.length} file(s)</small></h3><div id="fo107Files">${batchFiles107.length?batchFiles107.map((o,i)=>batchFileCard107(o,i)).join(''):'<p class="hint">No CSV files selected. Existing scanner results will remain unchanged until you confirm.</p>'}</div></section>
+  <div class="fo111-zeroEntry"><label for="fo111ZeroCodes">Confirmed zero-result scanner codes (only if Chartink returned no stocks)</label><input id="fo111ZeroCodes" value="${esc(checked.join(', '))}" placeholder="e.g. S01, S04 or 701, 704" oninput="fo111ApplyZeroText(this.value)"><div class="fo111-zeroError" id="fo111ZeroError"></div><p class="hint">Do not enter a code you did not run. Unspecified scanners are automatically NOT RUN.</p></div>
+  <button class="btn" onclick="fo111Tab('status')">Review Run Status →</button>
+ </div>
+ <div id="fo111PaneStatus" style="${fo111_tab==='input'?'display:none':''}">
+  <div class="info"><b>Automatic run partition:</b> Scanner CSV results update their respective scans; confirmed zero may create DROPPED records. All other scanners are NOT RUN and their previous records remain unchanged.</div>
+  <section class="fo107-part"><h3>CONFIRMED ZERO <small>· tick only when scanned and empty</small></h3><div class="fo107-zero" id="fo107ZeroGrid">${state.scannerCatalog105.map(s=>`<label class="fo107-zeroitem"><input type="checkbox" data-batchzero="${esc(s.code)}" ${checked.includes(s.code)?'checked':''} onchange="fo111ZeroCheckboxesChanged()"><b>${esc(s.code)}</b><span>${esc(s.name)}</span></label>`).join('')}</div></section>
+  <section class="fo107-part"><h3>RUN STATUS PREVIEW</h3><div id="fo107Status"></div></section>
+  <div class="fo111-statusGroups"><div class="fo111-statusGroup"><b>CSV RESULT</b><p>Uploaded scanner CSV replaces this market-date run after confirmation.</p></div><div class="fo111-statusGroup"><b>CONFIRMED ZERO</b><p>Mark only after running Chartink and confirming no hits.</p></div><div class="fo111-statusGroup"><b>NOT RUN</b><p>Leave untouched: previous scanner data remains.</p></div></div>
+  <button class="btn" onclick="fo111Tab('input')">← Back to Scan Input</button>
+ </div>
+ <div class="fo111-footer"><span class="hint">Watchlists, observations, scanner history and trade records are preserved.</span><button class="btn primary" onclick="commitBatch107()">✓ Import Selected Runs</button></div>`;
+ batchStatus107();
+};
+
+/* TRINETRA F&O v1.0.12 — scanner run categories aligned with TRINETRA Long.
+   Date and run type together identify snapshots. PRE-v1.0.12 scans remain unlabelled. */
+let fo112_week='MID-WEEK',fo112_month='MID-MONTH';
+function fo112TagText(run){return run?.runTag||'UNLABELED (older import)'}
+function fo112RunTagForCode(code){
+ const tf=String(scanner105(code)?.tf||'Daily').toLowerCase();
+ if(tf.startsWith('week'))return fo112_week;
+ if(tf.startsWith('month'))return fo112_month;
+ return 'DAILY';  // D/H scans are part of the daily F&O short-scanner cycle.
+}
+function fo112SortKey(run){
+ const tag=run.runTag||'';
+ const rank={'MID-WEEK':1,'MID-MONTH':1,'DAILY':1,'WEEK CLOSE':2,'MONTH CLOSE':2,'':1}[tag]||1;
+ return (runDay106(run)||'')+'|'+String(rank).padStart(2,'0')+'|'+(run.at||'');
+}
+const fo112LastRunBefore=lastRun105;
+lastRun105=function(code){
+ const list=(state.scannerRuns105||[]).filter(r=>r.scanner===code).sort((a,b)=>fo112SortKey(a).localeCompare(fo112SortKey(b)));
+ return list.at(-1)||null;
+};
+runsOf106=function(code){return (state.scannerRuns105||[]).filter(r=>r.scanner===code).sort((a,b)=>fo112SortKey(a).localeCompare(fo112SortKey(b)))};
+const fo112OpenBatchBefore=openBatch107;
+openBatch107=function(){fo112_week='MID-WEEK';fo112_month='MID-MONTH';fo112OpenBatchBefore();};
+const fo112BatchPageBefore=batchPage107;
+batchPage107=function(reset=false){
+ const wk=document.getElementById('fo112Week'),mo=document.getElementById('fo112Month');
+ if(wk)fo112_week=wk.value;
+ if(mo)fo112_month=mo.value;
+ if(reset){fo112_week='MID-WEEK';fo112_month='MID-MONTH'}
+ fo112BatchPageBefore(reset);
+ const row=document.querySelector('#fo111PaneInput .fo107-start');
+ if(row){row.insertAdjacentHTML('beforeend',
+   '<label class="field"><span>Weekly scan run · S02 / S05</span><select class="text" id="fo112Week" onchange="fo112_week=this.value;fo112ShowTags()"><option value="MID-WEEK">Mid-Week</option><option value="WEEK CLOSE">Week Closing</option></select></label>'+ 
+   '<label class="field"><span>Monthly scan run · S03</span><select class="text" id="fo112Month" onchange="fo112_month=this.value;fo112ShowTags()"><option value="MID-MONTH">Mid-Month</option><option value="MONTH CLOSE">Month Closing</option></select></label>');
+   document.getElementById('fo112Week').value=fo112_week;
+   document.getElementById('fo112Month').value=fo112_month;
+ }
+ const input=document.getElementById('fo111PaneInput');
+ if(input){let blurb=document.createElement('div');blurb.className='info';blurb.style.margin='8px 0 12px';blurb.innerHTML='<b>Daily run is automatic:</b> S01 (Daily), S04 (Daily), S06 (Hourly) are saved as <b>DAILY</b>. Choose Mid-Week / Week Closing for S02 &amp; S05 and Mid-Month / Month Closing for S03. A mixed CSV batch assigns the appropriate run type to each scanner. The selected run types are saved in scanner history.';
+   let zone=input.querySelector('.fo111-inputZone');if(zone)zone.before(blurb);}
+ fo112ShowTags();
+};
+function fo112ShowTags(){
+ const status=document.getElementById('fo107Status');if(!status)return;
+ let note=status.querySelector('#fo112StatusPreview');
+ if(!note){note=document.createElement('div');note.id='fo112StatusPreview';note.className='info';note.style.marginTop='10px';status.appendChild(note)}
+ const codes=[...new Set([...(typeof batchFiles107!=='undefined'?batchFiles107.map(f=>f.code).filter(Boolean):[]),...batchSelectedZero107()])];
+ note.innerHTML='<b>Run classification:</b> '+(codes.length?codes.map(c=>esc(c)+' → <b>'+esc(fo112RunTagForCode(c))+'</b>').join(' &nbsp;·&nbsp; '):'Select CSV files or confirmed-zero scanners to preview labels.');
+}
+const fo112StatusBefore=batchStatus107;
+batchStatus107=function(){fo112StatusBefore();fo112ShowTags()};
+const fo112MotherBefore=motherPage106;
+motherPage106=function(){
+ let html=fo112MotherBefore();
+ html=html.replace('Last scanner events · workflow','Last scanner events · workflow');
+ const activity=state.scannerCatalog105.map(s=>{let r=lastRun105(s.code);return r?'<span class="pill seg">'+esc(s.code)+' · '+esc(fo112TagText(r))+'</span>':''}).filter(Boolean).join(' ');
+ const banner='<div class="info" style="margin:0 0 14px"><b>Latest Event — ACTIVE:</b> This stock is currently tracked in MOTHER (latest scanner result and/or Watchlist / Keep Watch). It is NOT a live trade, open position or fresh entry signal. <br><b>Latest scanner run types:</b> '+(activity||'No runs recorded')+'</div>';
+ const at=html.indexOf('<div class="v106-mother-top">');
+ if(at>=0)html=html.slice(0,at)+banner+html.slice(at);
+ return html;
+};
+const fo112ScannerOneBefore=scannerOne105;
+scannerOne105=function(code){
+ let html=fo112ScannerOneBefore(code),run=lastRun105(code);
+ if(!run)return html;
+ const content='<div class="info" style="margin-bottom:12px"><b>Latest run:</b> '+esc(runDay106(run))+' · <b>'+esc(fo112TagText(run))+'</b> · '+(run.rows?.length||0)+' stock(s). Older snapshots without a saved run type are shown as UNLABELED.</div>';
+ const token='<div class="v106-compare">';
+ const at=html.indexOf(token);
+ return at>=0?html.slice(0,at)+content+html.slice(at):content+html;
+};
+const fo112HubBefore=scanHub105;
+scanHub105=function(){const html=fo112HubBefore(),last=state.scanBatchAudits107?.at(-1);
+ const msg=last?'<div class="info"><b>Last imported batch:</b> '+esc(last.date)+' · Weekly: '+esc(last.weeklyRunTag||'UNLABELED')+' · Monthly: '+esc(last.monthlyRunTag||'UNLABELED')+'</div>':'';
+ return msg+html;
+};
+
+const fo111RenderBefore=render;
+render=function(...args){
+ const result=fo111RenderBefore.apply(this,args);
+ const label=document.querySelector('.brand > small');if(label)label.textContent='DERIVATIVES · TRADE JOURNAL · v'+FO111_VERSION;
+ document.title='TRINETRA F&O · Derivatives Trading Journal v'+FO111_VERSION;
+ return result;
 };
 
 render();

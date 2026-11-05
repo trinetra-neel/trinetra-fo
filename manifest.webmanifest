@@ -1,7 +1,7 @@
 {
   "name": "TRINETRA F&O — Derivatives Trading Journal",
   "short_name": "TRINETRA F&O",
-  "description": "TRINETRA F&O v1.0.9 · Zerodha auto charges, S01–S06 batch Scanner CSV, MOTHER, WS-01–WS-Self, futures/options trading journal",
+  "description": "TRINETRA F&O v1.0.12 · Zerodha auto charges, S01–S06 batch Scanner CSV, MOTHER, WS-01–WS-Self, futures/options trading journal",
   "id": "./index.html",
   "start_url": "./index.html",
   "scope": "./",
